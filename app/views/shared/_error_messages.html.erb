@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+  <div class="error_explanation">
+    <div class="alert alert-danger">
+        <%= @user.errors.count %>つの入力内容が正しくありません。
+    </div>
+    <ul class="error_messages">
+    <% @user.errors.full_messages.each do |msg| %>
+      <li class="message"><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

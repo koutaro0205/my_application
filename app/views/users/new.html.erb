@@ -1,21 +1,23 @@
 <% provide(:title, "ユーザー登録") %>
-<section class="section inner-width">
+<section class="section content-width">
   <div class="form__inner">
     <h1 class="sectionTitle">ユーザー登録</h1>
-    <form class="form">
-      <label for="name" class="form__label">名前</label>
-      <input class="form-control" type="text" id="name">
+    <%= form_with(model: @user, local: true, class: "form") do |f| %>
+      <%= render 'shared/error_messages' %>
 
-      <label for="email" class="form__label">メールアドレス</label>
-      <input class="form-control" type="email" id="email">
+      <%= f.label :name, "名前", class: "form__label" %>
+      <%= f.text_field :name, class: "form-control" %>
 
-      <label for="password" class="form__label">パスワード</label>
-      <input class="form-control" type="password" id="password">
+      <%= f.label :email, "メールアドレス", class: "form__label" %>
+      <%= f.email_field :email, class: "form-control" %>
 
-      <label for="password-cofirmation" class="form__label">パスワード（確認）</label>
-      <input class="form-control" type="password" id="password-cofirmation">
+      <%= f.label :password, "パスワード", class: "form__label" %>
+      <%= f.password_field :password, class: "form-control" %>
 
-      <input type="submit" value="ユーザー登録" class="form__btn btn">
-    </form>
+      <%= f.label :password_confirmation, "パスワード（確認）", class: "form__label" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+
+      <%= f.submit "ユーザー登録", class: "form__btn btn" %>
+    <% end %>
   </div>
 </section>

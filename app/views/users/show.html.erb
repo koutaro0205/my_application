@@ -1,0 +1,29 @@
+<% provide(:title, @user.name) %>
+    <section class="section content-width profile">
+      <h1 class="sectionTitle">ユーザー情報</h1>
+      <div class="profileCard">
+        <ul class="profileCard__info">
+          <li class="profileCard__image">
+            <%= image_tag 'default.jpg', :class => "image", :alt => 'デフォルト画像' %>
+          </li>
+          <li class="profileCard__user">
+            <p class="profileCard__user-name"><%= @user.name %></p>
+            <p class="profileCard__user-postsCounts">投稿数：３</p>
+            <ul class="profileCard__user-follow">
+              <li class="profileCard__user-following">
+                <span class="profileCard__user-followingCounts">17</span>
+                <p class="profileCard__user-following-link"><a href="">フォロー</a></p>
+              </li>
+              <li class="profileCard__user-followr">
+                <span class="profileCard__user-followersCounts">23</span>
+                <p class="profileCard__user-follower-link"><a href="">フォロワー</a></p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <a href="" class="profileCard__follow-btn btn">フォロー</a>
+      </div>
+    </section>
+    <section class="section content-width my-recipes">
+      <h1 class="sectionTitle">レシピ一覧</h1>
+    </section>

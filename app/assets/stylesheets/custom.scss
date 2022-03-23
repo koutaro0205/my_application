@@ -3,6 +3,8 @@
 $baseColor: #DED36E;
 $fontColor: #C6020C;
 
+/* reset css */
+
 /*
 html5doctor.com Reset Stylesheet
 v1.6.1
@@ -106,6 +108,7 @@ input, select {
     vertical-align:middle;
 }
 
+
 /* common */
 
 *{
@@ -125,12 +128,15 @@ ul{
 a{
   text-decoration: none;
 }
-.inner-width{
+.content-width{
   max-width: 1100px;
   margin: 0 auto;
 }
 .image{
   width: 100%;
+}
+.section{
+  margin-bottom: 50px;
 }
 .sectionTitle{
   font-size: 2.5rem;
@@ -151,6 +157,35 @@ a{
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* flashメッセージ */
+
+.error_explanation {
+  color: red;
+}
+.error_messages {
+  color: red;
+  margin: 0 0 30px 0;
+  list-style-type: disc;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
 
 /* header */
 
@@ -233,11 +268,14 @@ a{
 }
 
 /* main */
+/* each pages */
 
 .main{
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+/* top page */
 
 .recipe{
   width: 100%;
@@ -260,10 +298,53 @@ a{
   line-height: 1.5;
 }
 
+/* profile page */
+
+.profileCard__info{
+  display: flex;
+}
+.profileCard__image{
+  width: 150px;
+  height: 150px;
+  margin-right: 30px;
+  .image{
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+.profileCard__user-name{
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.profileCard__user-follow{
+  display: flex;
+  margin-top: 35px;
+}
+.profileCard__user-following{
+  padding-right: 25px;
+  border-right: solid 1px #000;
+}
+.profileCard__user-followr{
+  padding-left: 25px;
+}
+.profileCard__user-following-link, .profileCard__user-follower-link{
+  margin-top: 8px;
+}
+.profileCard__follow-btn{
+  margin-top: 25px;
+  color: #000;
+  width: 50%;
+  background-color: $baseColor;
+  border-color: $baseColor;
+}
+
 /* form */
 
 .form__inner{
-  width: 60%;
+  width: 55%;
   margin: 0 auto;
 }
 .form{
