@@ -19,8 +19,15 @@
       <div class="header__nav__inner">
         <ul class="header__nav-list">
           <li class="header__nav-item"><%= link_to 'ホーム', root_path, class: 'header__nav-link' %></li>
-          <li class="header__nav-item"><%= link_to 'ログイン', '#', class: 'header__nav-link' %></li>
+        <% if logged_in? %>
+          <li class="header__nav-item"><%= link_to 'ユーザー一覧', '#', class: 'header__nav-link' %></li>
+          <li class="header__nav-item"><%= link_to 'プロフィール', current_user, class: 'header__nav-link' %></li>
+          <li class="header__nav-item"><%= link_to 'ユーザー設定', '#', class: 'header__nav-link' %></li>
+          <li class="header__nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'header__nav-link' %></li>
+        <% else %>
+          <li class="header__nav-item"><%= link_to 'ログイン', login_path, class: 'header__nav-link' %></li>
           <li class="header__nav-item"><%= link_to 'ユーザー登録', signup_path, class: 'header__nav-link' %></li>
+        <% end %>
         </ul>
       </div>
     </nav>

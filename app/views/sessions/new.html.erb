@@ -1,0 +1,17 @@
+<% provide(:title, "ログイン") %>
+<section class="section content-width">
+  <div class="form__inner">
+    <h1 class="sectionTitle">ログイン</h1>
+    <%= form_with(url: login_path, scope: :session, local: true, class: "form") do |f| %>
+
+      <%= f.label :email, "メールアドレス", class: "form__label" %>
+      <%= f.email_field :email, class: "form__field" %>
+
+      <%= f.label :password, "パスワード", class: "form__label" %>
+      <%= f.password_field :password, class: "form__field" %>
+
+      <%= f.submit "ログイン", class: "form__btn btn" %>
+    <% end %>
+    <p class="signup">ユーザー登録されていない方は<%= link_to 'こちら', signup_path, class: 'signup-link' %></p>
+  </div>
+</section>
