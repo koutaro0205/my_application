@@ -8,6 +8,9 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.2"
 
 gem 'sassc-rails'
 gem 'bcrypt', '3.1.13'
+gem 'rails-i18n'
+gem 'image_processing', '1.9.3'
+gem 'mini_magick', '4.9.5'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

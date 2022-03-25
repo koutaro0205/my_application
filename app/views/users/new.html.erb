@@ -17,6 +17,9 @@
       <%= f.label :password_confirmation, "パスワード（確認）", class: "form__label" %>
       <%= f.password_field :password_confirmation, class: "form__field" %>
 
+      <label class="form__label">プロフィール画像</label>
+      <%= f.file_field :image, class: "image__field" %>
+
       <%= f.submit "ユーザー登録", class: "form__btn btn" %>
     <% end %>
   </div>

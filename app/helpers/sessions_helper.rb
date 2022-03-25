@@ -28,6 +28,14 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def redirect_back_or(profile_page)
+    if session[:forwarding_url]
+      redirect_to(session[:forwarding_url])
+    else
+      redirect_to(profile_page)
+    end
+  end
+
   def forget(user)
     user.forget
     cookies.delete(:user_id)

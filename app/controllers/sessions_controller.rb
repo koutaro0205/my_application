@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
       if params[:session][:remember_me] == '1'
         remember(user)
       else
-        foget(user)
+        forget(user)
       end
       log_in user
-      redirect_to user
+      redirect_back_or user
     else
       flash.now[:danger] = 'メールアドレス、もしくはパスワードが異なります。ご確認の上、再度入力してください。'
       render 'new'

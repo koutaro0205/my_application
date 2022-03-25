@@ -4,7 +4,11 @@
       <div class="profileCard profileCard--margin-top">
         <ul class="profileCard__info">
           <li class="profileCard__image">
-            <%= image_tag 'default.jpg', :class => "image", :alt => 'デフォルト画像' %>
+            <% if @user.image.attached? %>
+              <%= image_tag @user.image %>
+            <% else %>
+              <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+            <% end %>
           </li>
           <li class="profileCard__user">
             <p class="profileCard__user-name"><%= @user.name %></p>
