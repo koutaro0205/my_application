@@ -10,8 +10,14 @@
       <%= f.label :password, "パスワード", class: "form__label" %>
       <%= f.password_field :password, class: "form__field" %>
 
+      <%= f.label :remember_me, class: "checkbox" do %>
+        <%= f.check_box :remember_me %>
+        <span class="remember_me">次回から自動的にログインする</span>
+      <% end %>
+
       <%= f.submit "ログイン", class: "form__btn btn" %>
     <% end %>
     <p class="signup">ユーザー登録されていない方は<%= link_to 'こちら', signup_path, class: 'signup-link' %></p>
+    <p class="reset">パスワードをお忘れの方は<%= link_to 'こちら', '#', class: 'reset-link' %></p>
   </div>
 </section>

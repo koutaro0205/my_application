@@ -127,6 +127,12 @@ ul{
 }
 a{
   text-decoration: none;
+  color: #0000ED;
+  transition: .3s;
+  &:hover{
+    opacity: 0.6;
+    transition: .3s;
+  }
 }
 .content-width{
   max-width: 1100px;
@@ -241,9 +247,6 @@ a{
 .header__logo{
   font-size: 3.2rem;
   font-family: 'Allison', cursive;
-  &:hover{
-    opacity: 0.7;
-  }
 }
 .header__logo-link{
   color: $fontColor;
@@ -301,13 +304,15 @@ a{
 }
 .header__nav-item{
   &:nth-child(n+2){
-    margin-left: 20px;
+    margin-left: 35px;
   }
   margin-top: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .header__nav-link{
   padding: 15px 20px;
+  color: #000;
+  font-size: 1.4rem;
 }
 
 /* main */
@@ -327,8 +332,22 @@ a{
 .signup-link{
   text-decoration: underline;
   &:hover{
-    opacity: 0.7;
+    text-decoration: none;
   }
+}
+// .remember_me{
+//   @extend .signup;
+//   margin-bottom: 20px;
+// }
+.checkbox{
+  display: inline-block;
+  margin-bottom: 10px
+}
+.reset{
+  @extend .signup;
+}
+.reset-link{
+  @extend .signup-link;
 }
 
 /* top page */
@@ -356,13 +375,19 @@ a{
 
 /* profile page */
 
+.profileCard--margin-top{
+  margin-top: 50px;
+}
+
 .profileCard__info{
   display: flex;
 }
 .profileCard__image{
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin-right: 30px;
+  border-radius: 50%;
+  border: 0.5px solid #000;
   .image{
     border-radius: 50%;
     height: 100%;
