@@ -109,7 +109,7 @@ input, select {
 }
 
 
-/* common */
+/* common style */
 
 *{
   box-sizing: border-box;
@@ -207,7 +207,7 @@ a{
   border-color: $baseColor;
 }
 
-/* flashメッセージ */
+/* flash message */
 
 .error_explanation {
   color: red;
@@ -345,10 +345,6 @@ a{
     text-decoration: none;
   }
 }
-// .remember_me{
-//   @extend .signup;
-//   margin-bottom: 20px;
-// }
 .checkbox{
   display: inline-block;
   margin-bottom: 10px
@@ -466,6 +462,72 @@ a{
     &:hover{
       text-decoration: underline;
     }
+  }
+}
+
+/* users page */
+
+.user__item{
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  &:nth-child(n+2){
+    padding-top: 15px;
+    border-top: solid 1px grey;
+  }
+}
+.user__image{
+  @extend .profileCard__image;
+}
+.user__name{
+  a{
+    font-size: 1.8rem;
+    color: #000;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+.user__delete{
+  padding-left: 15px;
+  margin-left: 15px;
+  border-left: #000 solid 1px;
+  a{
+    text-decoration: underline;
+  }
+}
+
+/* pagenation */
+
+.pagination{
+  margin-top: 20px;
+  text-align: center;
+  .next_page{
+    &::after{
+      content: "次へ";
+    }
+  }
+  .previous_page{
+    &::before{
+      content: "前へ";
+    }
+  }
+  .current{
+    font-size: 1.8rem;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 8px;
+    border: #000 solid 0.5px;
+    background-color: $baseColor
+  }
+  span{
+    display: inline-block;
+    margin-right: 8px;
+  }
+  a{
+    @extend .current;
+    color: #000;
   }
 }
 

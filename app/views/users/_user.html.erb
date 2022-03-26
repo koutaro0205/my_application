@@ -1,0 +1,17 @@
+<li class="user__item">
+  <div class="user__image">
+    <% if user.image.attached? %>
+      <%= image_tag user.image %>
+    <% else %>
+      <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+    <% end %>
+  </div>
+  <div class="user__name">
+    <a class="user__name-link"><%= link_to user.name, user %></a>
+  </div>
+  <% if current_user.admin? && !current_user?(user) %>
+  <div class="user__delete">
+      <%= link_to "ユーザーを削除（管理者権限）", user, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+  </div>
+  <% end %>
+</li>

@@ -9,4 +9,28 @@
 User.create!(name:  "Example User",
   email: "example@railstutorial.org",
   password:              "foobar",
-  password_confirmation: "foobar")
+  password_confirmation: "foobar",
+  admin: true)
+
+User.create!(name:  "サルノリ",
+  email: "sarunori@gmail.com",
+  password:              "sarunori",
+  password_confirmation: "sarunori",
+  admin: false)
+
+User.create!(name:  "カバルドン",
+  email: "kabarudon@gmail.com",
+  password:              "kabarudon",
+  password_confirmation: "kabarudon",
+  admin: false)
+
+  # 追加のユーザーをまとめて生成する
+# 99.times do |n|
+#   name  = Faker::Name.name
+#   email = "example-#{n+1}@railstutorial.org"
+#   password = "password"
+#   User.create!(name:  name,
+#                 email: email,
+#                 password:              password,
+#                 password_confirmation: password)
+# end

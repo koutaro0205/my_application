@@ -3,14 +3,8 @@
   <h1 class="sectionTitle">ユーザー一覧</h1>
   <div class="users">
     <ul class="users__list">
-      <li class="user__item">
-        <div class="user__image">
-          <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
-        </div>
-        <div class="user__name">
-          <a class="user__name-link">ユーザー名</a>
-        </div>
-      </li>
+      <%= render @users %>
     </ul>
+    <%= will_paginate %>
   </div>
 </section>
