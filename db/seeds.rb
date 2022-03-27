@@ -10,19 +10,25 @@ User.create!(name:  "Example User",
   email: "example@railstutorial.org",
   password:              "foobar",
   password_confirmation: "foobar",
-  admin: true)
+  admin: true,
+  activated: true,
+  activated_at: Time.zone.now)
 
 User.create!(name:  "サルノリ",
   email: "sarunori@gmail.com",
   password:              "sarunori",
   password_confirmation: "sarunori",
-  admin: false)
+  admin: false,
+  activated: true,
+  activated_at: Time.zone.now)
 
 User.create!(name:  "カバルドン",
   email: "kabarudon@gmail.com",
   password:              "kabarudon",
   password_confirmation: "kabarudon",
-  admin: false)
+  admin: false,
+  activated: true,
+  activated_at: Time.zone.now)
 
   # 追加のユーザーをまとめて生成する
 # 99.times do |n|

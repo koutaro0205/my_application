@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     @users = User.paginate(page: params[:page])
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.image.attach(params[:user][:image])
     if @user.save
-      flash[:success] = "ユーザー登録が完了しました"
-      log_in @user
-      redirect_to @user
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "アカウントの有効化を行うため、メールをご確認ください"
+      redirect_to root_url
     else
       render 'new'
     end

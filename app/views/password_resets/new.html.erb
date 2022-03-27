@@ -1,0 +1,17 @@
+<% provide(:title, "パスワードをお忘れの方") %>
+<section class="section content-width">
+  <div class="form__inner">
+    <h1 class="sectionTitle">パスワードをお忘れの方</h1>
+    <p class="description">
+      パスワードの再設定を行います。<br>
+      登録した覚えのあるメールアドレスを入力してください。
+    </p>
+    <%= form_with(url: password_resets_path, scope: :password_reset, local: true, class: "form") do |f| %>
+
+      <%= f.label :email, "メールアドレス", class: "form__label" %>
+      <%= f.email_field :email, class: "form__field" %>
+
+      <%= f.submit "メールを送信", class: "form__btn btn" %>
+    <% end %>
+  </div>
+</section>

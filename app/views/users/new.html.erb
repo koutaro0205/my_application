@@ -18,7 +18,7 @@
       <%= f.password_field :password_confirmation, class: "form__field" %>
 
       <label class="form__label">プロフィール画像</label>
-      <%= f.file_field :image, class: "image__field" %>
+      <%= f.file_field :image, class: "image__field", accept: "image/jpeg,image/gif,image/png" %>
 
       <%= f.submit "ユーザー登録", class: "form__btn btn" %>
     <% end %>

@@ -1,0 +1,6 @@
+<%= @user.name %>さん、ようこそ！
+
+本サービスをご利用頂き誠にありがとうございます。
+以下のリンクより、アカウントの有効化をお願い致します。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
