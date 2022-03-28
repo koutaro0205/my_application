@@ -1,0 +1,8 @@
+<% provide(:title, "レシピ一覧") %>
+<section class="section content-width">
+  <h1 class="sectionTitle">レシピ一覧</h1>
+  <ul class="recipe">
+    <%= render @recipes %>
+  </ul>
+  <%= will_paginate %>
+</section>

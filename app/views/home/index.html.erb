@@ -1,5 +1,10 @@
 <% provide(:title, "ホーム") %>
 <section class="section content-width">
-  <h1 class="sectionTitle">レシピ一覧</h1>
-  <p>みんなのレシピ</p>
+  <h1 class="sectionTitle">最近のレシピ</h1>
+  <ul class="recipe">
+    <%= render @recipes %>
+  </ul>
+  <div class="read-more">
+    <%= link_to "レシピ一覧へ", recipes_path ,class: "read-more__btn btn"%>
+  </div>
 </section>

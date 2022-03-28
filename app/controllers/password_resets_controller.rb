@@ -14,6 +14,8 @@ class PasswordResetsController < ApplicationController
       flash[:info] = "パスワードの再設定方法を記載したメールを送信しました"
       redirect_to root_url
     else
+      flash.now[:danger] = "該当するメールアドレスが見つかりません"
+      render 'new'
     end
   end
 
@@ -30,6 +32,7 @@ class PasswordResetsController < ApplicationController
       redirect_to @user
     else
       render 'edit'
+      # with validation messages
     end
   end
 

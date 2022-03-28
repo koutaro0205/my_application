@@ -377,12 +377,25 @@ a{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 .recipe__card{
-  width: 30%;
+  width: calc(100% / 3);
+  padding: 15px 15px 0;
   &:nth-child(n+4){
     margin-top: 35px;
+  }
+}
+.recipe__card-image{
+  width: 100%;
+  height: 220px;
+  img{
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
   }
 }
 .recipe__card-title{
@@ -390,8 +403,18 @@ a{
   padding: 8px 0;
   line-height: 1.5;
 }
-.recipe__card-description{
+.recipe__card-body{
   line-height: 1.5;
+}
+.read-more{
+  text-align: center;
+  margin-top: 50px;
+}
+.read-more__btn{
+  color: #000;
+  width: 30%;
+  background-color: $baseColor;
+  border-color: $baseColor;
 }
 
 /* profile page */

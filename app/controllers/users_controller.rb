@@ -53,16 +53,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
     end
 
-    def logged_in_user
-      if logged_in?
-        true
-      else
-        session[:forwarding_url] = request.original_url if request.get?
-        flash[:danger] = "ログインが必要です"
-        redirect_to login_url
-      end
-    end
-
     def correct_user
       @user = User.find_by(id: params[:id])
       if current_user?(@user)

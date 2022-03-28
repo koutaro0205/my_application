@@ -3,6 +3,8 @@ class User < ApplicationRecord
   before_save   :downcase_email
   before_create :create_activation_digest
 
+  has_many :recipes, dependent: :destroy
+
   has_one_attached :image
 
   validates :name, presence: true, length: { maximum: 50 }

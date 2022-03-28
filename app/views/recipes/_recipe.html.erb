@@ -1,0 +1,14 @@
+<li class="recipe__card">
+  <div class="recipe__card-image">
+    <% if recipe.image.attached? %>
+      <%= image_tag recipe.image, :class => "image" %>
+    <% else %>
+      <%= image_tag 'noimage.jpg', :class => "image", :alt => 'デフォルト画像' %>
+    <% end %>
+  </div>
+  <h2 class="recipe__card-title"><%= recipe.title %></h2>
+  <span class="recipe__card-timestamp">
+    <%= time_ago_in_words(recipe.created_at) %>前に投稿
+  </span>
+  <p class="recipe__card-userName">投稿者：<%= link_to recipe.user.name, recipe.user %></p>
+</li>
