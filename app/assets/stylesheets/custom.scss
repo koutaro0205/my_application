@@ -127,7 +127,7 @@ ul{
 }
 a{
   text-decoration: none;
-  color: #0000ED;
+  color: #000;
   transition: .3s;
   &:hover{
     opacity: 0.6;
@@ -195,6 +195,9 @@ a{
   border-radius: 4px;
   margin-bottom: 25px;
   // box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+.form__textarea{
+  height: 238px;
 }
 .image__field{
   display: inline-block;
@@ -373,21 +376,22 @@ a{
 
 /* top page */
 
-.recipe{
+.recipes{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-left: -15px;
   margin-right: -15px;
 }
-.recipe__card{
+.recipeCard{
   width: calc(100% / 3);
   padding: 15px 15px 0;
   &:nth-child(n+4){
     margin-top: 35px;
   }
 }
-.recipe__card-image{
+.recipeCard__image{
+  display: block;
   width: 100%;
   height: 220px;
   img{
@@ -398,13 +402,34 @@ a{
     border-radius: 15px;
   }
 }
-.recipe__card-title{
+.recipeCard__title{
   font-size: 1.8rem;
-  padding: 8px 0;
+  padding: 8px;
   line-height: 1.5;
 }
-.recipe__card-body{
-  line-height: 1.5;
+.recipeCard__user{
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+.recipeCard__user-image{
+  display: inline-block;
+  margin-right: 20px;
+  img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+.recipeCard__user-name{
+  display: block;
+}
+.recipeCard__timestamp{
+  font-size: 1.2rem;
+  color: #a4a4a4;
+  display: inline-block;
+  margin-top: 8px;
+  padding: 0 8px;
 }
 .read-more{
   text-align: center;
@@ -470,7 +495,7 @@ a{
   border-color: $baseColor;
 }
 
-/* edit page */
+/* user-edit page */
 
 .edit-image{
   margin-bottom: 25px;
@@ -534,6 +559,90 @@ a{
   a{
     text-decoration: underline;
   }
+}
+
+/* recipe page */
+
+.recipe{
+  display: flex;
+}
+.recipe__image{
+  width: 45%;
+  img{
+    width: 100%;
+  }
+}
+.recipe__info{
+  width: 55%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.recipe__ingredient{
+  margin-bottom: 50px;
+}
+.recipe__body{
+  margin-bottom: 50px;
+}
+.recipe__title{
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 5px;
+}
+.recipe__user{
+  @extend .recipeCard__user;
+  padding: 0;
+  margin-top: 15px;
+}
+.recipe__user-image{
+  @extend .recipeCard__user-image;
+}
+.recipe__user-name{
+  @extend .recipeCard__user-name;
+}
+.recipe__timestamp{
+  @extend .recipeCard__timestamp;
+  margin-bottom: 25px;
+}
+.recipe__info-head{
+  font-size: 1.7rem;
+  line-height: 1.3;
+  border-bottom: 1px solid #d0d0d0;
+  margin-bottom: 8px;
+}
+.recipe__info-content{
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.recipe__btn{
+  text-align: center;
+  margin-top: 50px;
+}
+.recipe__edit-btn{
+  color: #000;
+  width: 25%;
+  background-color: $baseColor;
+  border-color: $baseColor;
+  margin-right: 10px;
+}
+.recipe__delete-btn{
+  color: #000;
+  width: 25%;
+  background-color: #d0d0d0;
+  border-color: #d0d0d0;
+}
+
+/* new-edit page */
+
+.form__inner-newPage{
+  width: 75%;
+  margin: 0 auto;
+}
+
+/* recipe-edit page */
+
+.form__inner-editPage{
+  width: 75%;
+  margin: 0;
 }
 
 /* pagenation */

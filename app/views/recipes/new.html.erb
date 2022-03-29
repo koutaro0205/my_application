@@ -1,17 +1,18 @@
 <% provide(:title, "レシピを投稿") %>
 <section class="section content-width">
-  <div class="form__inner">
+  <div class="form__inner-newPage">
     <h1 class="sectionTitle">レシピを投稿する</h1>
     <%= form_with(model: @recipe, url: recipes_path, scope: :recipe, local: true, class: "form") do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :title, "レシピタイトル", class: "form__label" %>
-      <%= f.text_field :title, class: "form__field" %>
+      <%= f.text_field :title, class: "form__field", placeholder: "レシピタイトルを入力" %>
 
       <%= f.label :ingredient, "材料", class: "form__label" %>
-      <%= f.text_area :ingredient, class: "form__field" %>
+      <%= f.text_area :ingredient, class: "form__field form__textarea", placeholder: "レシピに用いる具材や調味料を入力"%>
 
-      <%= f.label :body, "作り方・説明", class: "form__label" %>
-      <%= f.text_area :body, class: "form__field" %>
+      <%= f.label :body, "作り方・説明（任意）", class: "form__label" %>
+      <%= f.text_area :body, class: "form__field form__textarea", placeholder: "作り方やレシピについての説明を入力（※任意）" %>
 
       <label class="form__label">レシピのイメージ画像</label>
       <%= f.file_field :image, class: "image__field", accept: "image/jpeg,image/gif,image/png" %>

@@ -22,7 +22,7 @@
   <div class="form__inner">
     <h1 class="sectionTitle">登録情報（編集）</h1>
     <%= form_with(model: @user, local: true, class: "form") do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name, "名前", class: "form__label" %>
       <%= f.text_field :name, class: "form__field" %>

@@ -28,6 +28,10 @@
         <a href="" class="profileCard__follow-btn btn">フォロー</a>
       </div>
     </section>
-    <section class="section content-width my-recipes">
-      <h1 class="sectionTitle">レシピ一覧</h1>
+    <section class="section content-width">
+      <h1 class="sectionTitle">私のレシピ一覧</h1>
+      <ul class="recipe">
+        <%= render @recipes %>
+      </ul>
+      <%= will_paginate @recipes %>
     </section>
