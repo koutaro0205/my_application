@@ -12,20 +12,13 @@
           </li>
           <li class="profileCard__user">
             <p class="profileCard__user-name"><%= @user.name %></p>
-            <p class="profileCard__user-postsCounts">投稿数：３</p>
-            <ul class="profileCard__user-follow">
-              <li class="profileCard__user-following">
-                <span class="profileCard__user-followingCounts">17</span>
-                <p class="profileCard__user-following-link"><a href="">フォロー</a></p>
-              </li>
-              <li class="profileCard__user-followr">
-                <span class="profileCard__user-followersCounts">23</span>
-                <p class="profileCard__user-follower-link"><a href="">フォロワー</a></p>
-              </li>
-            </ul>
+            <% if @user.recipes.any? %>
+              <p class="profileCard__user-postsCounts">投稿数：<%= @user.recipes.count %></p>
+            <% end %>
+            <%= render 'shared/stats' %>
           </li>
         </ul>
-        <a href="" class="profileCard__follow-btn btn">フォロー</a>
+        <%= render 'follow_form' if logged_in? %>
       </div>
     </section>
     <section class="section content-width">

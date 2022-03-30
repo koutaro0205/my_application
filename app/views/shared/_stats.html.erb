@@ -1,0 +1,11 @@
+<% @user ||= current_user %>
+<ul class="profileCard__user-follow">
+  <li class="profileCard__user-following">
+    <span class="profileCard__user-followingCounts"><%= @user.following.count %></span>
+    <p class="profileCard__user-following-link"><a href="<%= following_user_path(@user) %>">フォロー</a></p>
+  </li>
+  <li class="profileCard__user-followr">
+    <span class="profileCard__user-followersCounts"><%= @user.followers.count %></span>
+    <p class="profileCard__user-follower-link"><a href="<%= followers_user_path(@user) %>">フォロワー</a></p>
+  </li>
+</ul>

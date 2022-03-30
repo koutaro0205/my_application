@@ -1,6 +1,4 @@
 module SessionsHelper
-  #ここで定義したメソッドはどこのコントローラでも使用可能
-  #(application_controller.rb:include SessionsHelper)
 
   def log_in(user)
     session[:user_id] = user.id

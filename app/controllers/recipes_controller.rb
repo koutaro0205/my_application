@@ -3,8 +3,8 @@ class RecipesController < ApplicationController
   before_action :correct_user_recipe, only: [:edit, :update, :destroy]
 
   def index
+    # @recipes = feed.paginate(page: params[:page])
     @recipes = Recipe.paginate(page: params[:page])
-    # @user = @recipes.user
   end
 
   def show

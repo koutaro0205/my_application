@@ -1,6 +1,6 @@
 <% provide(:title, "ホーム") %>
 <section class="section content-width">
-  <h1 class="sectionTitle">みんなのレシピ</h1>
+  <h1 class="sectionTitle">最近のレシピ</h1>
   <ul class="recipes">
     <%= render @recipes %>
   </ul>
@@ -9,6 +9,9 @@
   </div>
 </section>
 <% if logged_in? %>
+  <section class="section content-width">
+    <h1 class="sectionTitle">フォローしているユーザーのレシピ</h1>
+  </section>
   <section class="section content-width">
     <h1 class="sectionTitle">あなたのお気に入りレシピ</h1>
   </section>
