@@ -1,4 +1,4 @@
-<% provide(:title, "ユーザー一覧") %>
+<% provide(:title, @title) %>
 <section class="section content-width">
   <div class="container">
     <div class="profileCard profileCard__users">
@@ -21,11 +21,13 @@
       </ul>
     </div>
     <div class="users">
-      <h2 class="subTitle">登録ユーザー一覧</h2>
+    <h2 class="subTitle"><%= @title %></h2>
+    <% if @users.any? %>
       <ul class="users__list">
         <%= render @users %>
       </ul>
       <%= will_paginate %>
+    <% end %>
     </div>
   </div>
 </section>

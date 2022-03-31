@@ -11,6 +11,9 @@
 <% if logged_in? %>
   <section class="section content-width">
     <h1 class="sectionTitle">フォローしているユーザーのレシピ</h1>
+    <ul class="recipes">
+  <%= render @following_feed %>
+  </ul>
   </section>
   <section class="section content-width">
     <h1 class="sectionTitle">あなたのお気に入りレシピ</h1>

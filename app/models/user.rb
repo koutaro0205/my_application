@@ -64,7 +64,7 @@ class User < ApplicationRecord
   end
 
   def feed
-    Recipe.where("user_id = ?", id) # = 今のところRecipe.all レシピ一覧を返す
+    Recipe.where("user_id = ?", following_ids)
   end
 
   def follow(other_user)

@@ -148,6 +148,10 @@ a{
   font-size: 2.5rem;
   margin: 25px 0;
 }
+.subTitle{
+  font-size: 2.2rem;
+  margin: 25px 0;
+}
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -156,8 +160,8 @@ a{
   white-space: nowrap;
   vertical-align: middle;
   background-image: none;
-  border: 1px solid transparent;
-  padding: 6px 12px;
+  border: 3px solid transparent;
+  padding: 4px 12px;
   font-size: 14px;
   line-height: 1.4;
   border-radius: 4px;
@@ -494,6 +498,14 @@ a{
   background-color: $baseColor;
   border-color: $baseColor;
 }
+.profileCard__unfollow-btn{
+  margin-top: 25px;
+  color: #000;
+  width: 50%;
+  background-color: #fff;
+  border: $baseColor solid 3px;
+  box-sizing: border-box;
+}
 
 /* user-edit page */
 
@@ -530,7 +542,17 @@ a{
 
 /* users page */
 
+.container{
+  display: flex;
+}
+.users{
+  width: 65%;
+}
+.profileCard__users{
+  width: 35%;
+}
 .user__item{
+  position: relative;
   display: flex;
   align-items: center;
   padding-bottom: 15px;
@@ -544,7 +566,7 @@ a{
 }
 .user__name{
   a{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #000;
     cursor: pointer;
     &:hover{
@@ -559,6 +581,24 @@ a{
   a{
     text-decoration: underline;
   }
+}
+.user__follow{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.user__follow-btn{
+  color: #000;
+  width: 120px;
+  background-color: $baseColor;
+  border-color: $baseColor;
+}
+.user__unfollow-btn{
+  color: #000;
+  width: 120px;
+  background-color: #fff;
+  border: $baseColor solid 3px;
 }
 
 /* recipe page */
