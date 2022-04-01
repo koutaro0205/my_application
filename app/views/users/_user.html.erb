@@ -14,13 +14,4 @@
       <%= link_to "ユーザーを削除（管理者権限）", user, method: :delete, data: { confirm: "本当に削除しますか?" } %>
   </div>
   <% end %>
-
-  <%
-=begin%>
- <div class="user__follow">
-    <% @user = user %>
-    <%= render 'follow_form' if logged_in? %>
-  </div> 
-<%
-=end%>
 </li>

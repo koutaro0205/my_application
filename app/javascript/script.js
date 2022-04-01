@@ -1,5 +1,5 @@
-// import jquery from "jquery"
-// window.$ = jquery
+import jquery from "jquery"
+window.$ = jquery
 // $(".image__field").bind("change", function() {
 //   var size_in_megabytes = this.files[0].size/1024/1024;
 //   if (size_in_megabytes > 5) {
@@ -7,3 +7,12 @@
 //     $(".image__field").val("");
 //   }
 // });
+
+$(function () {
+  $('#openModal').click(function(){
+      $('#modalArea').fadeIn();
+  });
+  $('#closeModal , #modalBg').click(function(){
+    $('#modalArea').fadeOut();
+  });
+});

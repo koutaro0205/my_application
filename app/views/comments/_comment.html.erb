@@ -1,0 +1,17 @@
+<% if @comments.any? %>
+<li class="comments__item">
+  <div class="comments__userInfo">
+    <div class="comments__user-imge">
+      <% if comment.user.image.attached? %>
+        <%= image_tag comment.user.image %>
+      <% else %>
+        <%= image_tag 'default.svg', class: "image", alt: 'デフォルト画像' %>
+      <% end %>
+    </div>
+    <p class="comments__user-name"><%= comment.user.name%></p>
+  </div>
+  <p class="comments__content">
+    <%= simple_format comment.content %>
+  </p>
+</li>
+<% end %>

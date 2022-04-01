@@ -10,6 +10,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @user = @recipe.user
+    @comment = current_user.comments.new
+    @comments = @recipe.comments.order(created_at: :desc)
   end
 
   def new

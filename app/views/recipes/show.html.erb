@@ -1,6 +1,6 @@
 <% provide(:title, @recipe.title) %>
 <section class="section content-width">
-  <h1 class="sectionTitle">レシピ詳細</h1>
+  <h1 class="sectionTitle">こだわりレシピ</h1>
   <h2 class="recipe__title"><%= @recipe.title %></h2>
   <div class="recipe__user">
     <%= link_to user_path(@user), class: 'recipe__user-image' do %>
@@ -40,6 +40,40 @@
       <%= link_to "レシピを削除する", recipe_path, method: :delete, data: { confirm: "本当に削除しますか?" }, class: "recipe__delete-btn btn"%>
     </div>
   <% end %>
+</section>
+
+<section class="section content-width">
+  <h1 class="sectionTitle">コメント一覧</h1>
+    <div class="comments">
+      <ul class="comments__list">
+        <%= render @comments %>
+      </ul>
+    </div>
+
+  <% if logged_in? && !current_user?(@user) %>
+    <div class="modalBtn">
+      <button id="openModal">コメントを残す</button>
+    </div>
+    <div id="modalArea" class="modalArea">
+      <div id="modalBg" class="modalBg"></div>
+      <div class="modalWrapper">
+        <div class="modalContents">
+          <div class="form__inner-modal">
+            <h1 class="sectionTitle">コメントを投稿する</h1>
+            <%= form_with(model: [@recipe, @comment], local: true, class: "form") do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>
+
+              <%= f.label :content, "コメント", class: "form__label" %>
+              <%= f.text_area :content, class: "form__field form__textarea", placeholder: "コメントを入力（※任意）" %>
+
+              <%= f.submit "コメントを投稿する", class: "form__btn btn" %>
+            <% end %>
+          </div>
+        <div id="closeModal" class="closeModal">×</div>
+      </div>
+    </div>
+  <% end %>
+
 </section>
 
 
