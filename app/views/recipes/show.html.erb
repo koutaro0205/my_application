@@ -22,6 +22,7 @@
       <% else %>
         <%= image_tag 'noimage.jpg', class: "image", alt: 'デフォルト画像' %>
       <% end %>
+      <span class="recipe__favorite">お気に入り追加</span>
     </div>
     <div class="recipe__info">
       <div class="recipe__ingredient">
@@ -61,10 +62,9 @@
           <div class="form__inner-modal">
             <h1 class="sectionTitle">コメントを投稿する</h1>
             <%= form_with(model: [@recipe, @comment], local: true, class: "form") do |f| %>
-              <%= render 'shared/error_messages', object: f.object %>
 
               <%= f.label :content, "コメント", class: "form__label" %>
-              <%= f.text_area :content, class: "form__field form__textarea", placeholder: "コメントを入力（※任意）" %>
+              <%= f.text_area :content, class: "form__field form__textarea", placeholder: "コメントを入力" %>
 
               <%= f.submit "コメントを投稿する", class: "form__btn btn" %>
             <% end %>

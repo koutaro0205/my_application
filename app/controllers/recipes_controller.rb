@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @user = @recipe.user
-    @comment = current_user.comments.new
+    @comment = Comment.new
     @comments = @recipe.comments.order(created_at: :desc)
   end
 

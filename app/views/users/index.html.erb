@@ -16,7 +16,6 @@
           <% if current_user.recipes.any? %>
             <p class="profileCard__user-postsCounts">投稿数：<%= current_user.recipes.count %></p>
           <% end %>
-          <%= render 'shared/stats' %>
         </li>
       </ul>
     </div>

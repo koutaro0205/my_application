@@ -1,0 +1,23 @@
+<li class="recipeCard">
+  <%= link_to recipe_path(following_recipe), class: 'recipeCard__image' do %>
+    <% if following_recipe.image.attached? %>
+      <%= image_tag following_recipe.image, :class => "image" %>
+    <% else %>
+      <%= image_tag 'noimage.jpg', :class => "image", :alt => 'デフォルト画像' %>
+    <% end %>
+  <% end %>
+  <h2 class="recipeCard__title"><%= link_to following_recipe.title, recipe_path(following_recipe) %></h2>
+  <div class="recipeCard__user">
+    <%= link_to user_path(following_recipe.user), class: 'recipeCard__user-image' do %>
+      <% if following_recipe.user.image.attached? %>
+        <%= image_tag following_recipe.user.image, :class => "image" %>
+      <% else %>
+        <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+      <% end %>
+    <% end %>
+    <span class="recipeCard__user-name"><%= link_to following_recipe.user.name, following_recipe.user %></span>
+  </div>
+  <span class="recipeCard__timestamp">
+    投稿日：<%= l following_recipe.created_at, format: :default %>
+  </span>
+</li>

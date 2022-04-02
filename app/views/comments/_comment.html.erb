@@ -1,7 +1,7 @@
 <% if @comments.any? %>
 <li class="comments__item">
   <div class="comments__userInfo">
-    <div class="comments__user-imge">
+    <div class="comments__user-image">
       <% if comment.user.image.attached? %>
         <%= image_tag comment.user.image %>
       <% else %>
@@ -11,7 +11,15 @@
     <p class="comments__user-name"><%= comment.user.name%></p>
   </div>
   <p class="comments__content">
-    <%= simple_format comment.content %>
+    <%= comment.content %>
+    <span class="comments__timestamp">
+      <%= l comment.created_at, format: :default %>
+    </span>
+    <% if comment.user == current_user %>
+    <span class="comments__delete">
+      <%= link_to "コメントを削除", recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "comments__delete-btn"%>
+    </span>
+    <% end %>
   </p>
 </li>
 <% end %>
