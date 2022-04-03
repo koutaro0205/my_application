@@ -1,0 +1,4 @@
+<%= link_to recipe_favorites_path(@recipe), method: :delete do %>
+  <span class="favorite">お気に入り解除</span>
+  <%= image_tag 'favorite.svg', :alt => 'お気に入り状態' %>
+<% end %>

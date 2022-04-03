@@ -22,7 +22,10 @@
       <% else %>
         <%= image_tag 'noimage.jpg', class: "image", alt: 'デフォルト画像' %>
       <% end %>
-      <span class="recipe__favorite">お気に入り追加</span>
+
+      <% if !current_user?(@user) && logged_in? %>
+        <%= render 'favorite_form' %>
+      <% end %>
     </div>
     <div class="recipe__info">
       <div class="recipe__ingredient">

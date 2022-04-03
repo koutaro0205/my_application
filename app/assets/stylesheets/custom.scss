@@ -623,11 +623,31 @@ a{
   top: 0;
   left: 0;
   display: inline-block;
-  padding: 8px 12px;
-  background-color: $baseColor;
-  opacity: 0.7;
+  padding: 6px 12px;
+  background-color: #ccc;
+  opacity: 0.9;
   color: #000;
   font-size: 1.4rem;
+  a{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+  img{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+  span{
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .favorite{
+    color: #000;
+  }
+  .unfavorite{
+    color: #000;
+  }
 }
 .recipe__info{
   width: 55%;

@@ -1,0 +1,23 @@
+<li class="recipeCard">
+  <%= link_to recipe_path(favorite_recipe), class: 'recipeCard__image' do %>
+    <% if favorite_recipe.image.attached? %>
+      <%= image_tag favorite_recipe.image, :class => "image" %>
+    <% else %>
+      <%= image_tag 'noimage.jpg', :class => "image", :alt => 'デフォルト画像' %>
+    <% end %>
+  <% end %>
+  <h2 class="recipeCard__title"><%= link_to favorite_recipe.title, recipe_path(favorite_recipe) %></h2>
+  <div class="recipeCard__user">
+    <%= link_to user_path(favorite_recipe.user), class: 'recipeCard__user-image' do %>
+      <% if favorite_recipe.user.image.attached? %>
+        <%= image_tag favorite_recipe.user.image, :class => "image" %>
+      <% else %>
+        <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+      <% end %>
+    <% end %>
+    <span class="recipeCard__user-name"><%= link_to favorite_recipe.user.name, favorite_recipe.user %></span>
+  </div>
+  <span class="recipeCard__timestamp">
+    投稿日：<%= l favorite_recipe.created_at, format: :default %>
+  </span>
+</li>

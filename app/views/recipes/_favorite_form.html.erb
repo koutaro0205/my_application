@@ -1,0 +1,7 @@
+<div class="recipe__favorite">
+  <% if current_user.favorite?(@recipe) %>
+    <%= render 'unfavorite' %>
+  <% else %>
+    <%= render 'favorite' %>
+  <% end %>
+</div>

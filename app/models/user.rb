@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_recipes, through: :favorites, source: :recipe
+
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -82,6 +85,10 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def favorite?(recipe)
+    self.favorites.exists?(recipe_id: recipe.id)
   end
 
   private
