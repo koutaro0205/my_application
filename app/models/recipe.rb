@@ -13,6 +13,10 @@ class Recipe < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :ingredient, presence: true
 
+  def self.search(keyword)
+    Recipe.where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
   # def favorite(recipe)
   #   favorite_recipes << recipe
   # end

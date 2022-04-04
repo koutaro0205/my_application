@@ -1,0 +1,9 @@
+<% provide(:title, @title) %>
+<section class="section content-width">
+    <h1 class="sectionTitle"><%= @title %></h1>
+    <ul class="recipes">
+    <% if @favorite_recipes.any? %>
+      <%= render @favorite_recipes %>
+    <% end %>
+    </ul>
+</section>

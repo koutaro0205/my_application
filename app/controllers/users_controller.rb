@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers, :favorite_recipes]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
@@ -61,6 +61,12 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def favorite_recipes
+    @title = "あなたのお気に入りレシピ"
+    @favorite_recipes = current_user.favorite_recipes.paginate(page: params[:page])
+    render 'show_favorite'
   end
 
   private

@@ -51,6 +51,9 @@
     <div class="comments">
       <ul class="comments__list">
         <%= render @comments %>
+        <% if @comments.empty? %>
+          <p>この投稿にコメントはありません。</p>
+        <% end %>
       </ul>
     </div>
 

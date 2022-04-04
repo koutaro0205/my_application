@@ -17,12 +17,4 @@
     <% end %>
     </ul>
   </section>
-  <section class="section content-width">
-    <h1 class="sectionTitle">あなたのお気に入りレシピ</h1>
-    <ul class="recipes">
-    <% if @following_recipes.any? %>
-      <%= render @favorite_recipes %>
-    <% end %>
-    </ul>
-  </section>
 <% end %>

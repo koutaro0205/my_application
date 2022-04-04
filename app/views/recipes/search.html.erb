@@ -1,0 +1,13 @@
+<% provide(:title, @keyword) %>
+<section class="section content-width">
+  <h1 class="sectionTitle">キーワード：「<%= @keyword %>」の検索結果一覧</h1>
+  <ul class="recipes">
+    <% if @recipes.empty? %>
+      <p>見つかりませんでした</p>
+    <% end %>
+    <%= render @recipes %>
+  </ul>
+  <div class="read-more">
+    <%= link_to "レシピ一覧へ", recipes_path ,class: "read-more__btn btn"%>
+  </div>
+</section>
