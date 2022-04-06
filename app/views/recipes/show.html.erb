@@ -2,6 +2,19 @@
 <section class="section content-width">
   <h1 class="sectionTitle">こだわりレシピ</h1>
   <h2 class="recipe__title"><%= @recipe.title %></h2>
+  <p class="recipeCard__tag">ズボラポイント：
+    <%= link_to @tag, short_time_path, class: "recipeCard__tag-text1" %>
+  </p>
+  <div class="recipeCard__info">
+    <p class="recipeCard__duration">
+      <%= image_tag 'timer.svg', :alt => '時計の画像' %>
+      <%= @recipe.duration %>分
+    </p>
+    <p class="recipeCard__cost">
+      <%= image_tag 'yen.svg', :alt => 'お金の画像' %>
+      <%= @recipe.cost %>円
+    </p>
+  </div>
   <div class="recipe__user">
     <%= link_to user_path(@user), class: 'recipe__user-image' do %>
       <% if @user.image.attached? %>
@@ -52,7 +65,7 @@
       <ul class="comments__list">
         <%= render @comments %>
         <% if @comments.empty? %>
-          <p>この投稿にコメントはありません。</p>
+          <p class="nothing">この投稿にコメントはありません。</p>
         <% end %>
       </ul>
     </div>

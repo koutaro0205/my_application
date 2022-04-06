@@ -8,6 +8,14 @@
     <%= link_to "レシピ一覧へ", recipes_path ,class: "read-more__btn btn"%>
   </div>
 </section>
+<section class="section content-width">
+  <h1 class="sectionTitle">人気のズボラレシピ</h1>
+  <ul class="recipes">
+    <% if @favorite_recipes.any? %>
+      <%= render @favorite_recipes %>
+    <% end %>
+  </ul>
+</section>
 <% if logged_in? %>
   <section class="section content-width">
     <h1 class="sectionTitle">フォローしているユーザーのレシピ</h1>

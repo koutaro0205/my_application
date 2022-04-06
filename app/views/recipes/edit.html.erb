@@ -37,7 +37,24 @@
       <%= f.label :body, "作り方・説明（編集）", class: "form__label" %>
       <%= f.text_area :body, class: "form__field form__textarea" %>
 
-      <label class="form__label">レシピのイメージ画像（再設定）</label>
+      <div class="form__layout">
+        <div class="form__layout-item">
+          <%= f.label :duration, "所要時間（分）", class: "form__label-short" %>
+          <span class="required">必須</span>
+          <%= f.number_field :duration, class: "form__field-short" %>
+        </div>
+        <div class="form__layout-item">
+          <%= f.label :cost, "一食の値段（円）", class: "form__label-short" %>
+          <span class="required">必須</span>
+          <%= f.number_field :cost, class: "form__field-short" %>
+        </div>
+        <div class="form__layout-item">
+          <%= f.label :tag, "ズボラポイントを選択", class: "form__label-short" %>
+          <%= f.select :tag, [['時短レシピ', 1], ['格安レシピ', 2]], { include_blank: true }, { class: "form__field-short" } %>
+        </div>
+      </div>
+
+      <label class="form__label form__label-image">レシピのイメージ画像（再設定）</label>
       <%= f.file_field :image, class: "image__field", accept: "image/jpeg,image/gif,image/png" %>
 
       <%= f.submit "レシピ内容を更新する", class: "form__btn btn" %>

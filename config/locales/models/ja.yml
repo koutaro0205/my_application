@@ -12,3 +12,5 @@ ja:
       recipe:
         title: レシピタイトル
         ingredient: 材料
+        duration: 所要時間
+        cost: 値段

@@ -12,6 +12,13 @@ class RecipesController < ApplicationController
     @user = @recipe.user
     @comment = Comment.new
     @comments = @recipe.comments.order(created_at: :desc)
+    if @recipe.tag == 1
+      @tag = '時短'
+    elsif @recipe.tag == 2
+      @tag = '格安'
+    else
+      false
+    end
   end
 
   def new
@@ -57,9 +64,21 @@ class RecipesController < ApplicationController
     @keyword = params[:keyword]
   end
 
+  def short_time
+    @recipes = Recipe.where(tag: 1)
+    @title = '時短'
+    render 'show_tag'
+  end
+
+  def low_cost
+    @recipes = Recipe.where(tag: 2)
+    @title = '格安'
+    render 'show_tag'
+  end
+
   private
     def recipe_params
-      params.require(:recipe).permit(:title, :ingredient, :body, :image)
+      params.require(:recipe).permit(:title, :ingredient, :body, :image, :tag, :duration, :cost)
     end
 
     def correct_user_recipe
