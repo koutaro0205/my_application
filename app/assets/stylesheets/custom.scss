@@ -345,8 +345,13 @@ a{
   display: flex;
 }
 .header__menu-item{
+  border-radius: 4px;
+  &:first-child{
+    background-color: $baseColor;
+  }
   &:nth-child(n+2){
     margin-left: 20px;
+    background-color: gold;
   }
 }
 .header__nav{
@@ -372,7 +377,28 @@ a{
   color: #000;
   font-size: 1.4rem;
 }
-
+.dropdown{
+  position: relative;
+  // &::after{
+  //   content: "∨";
+  // }
+}
+.dropdown__lists{
+  position: absolute;
+  top: 31px;
+  background-color: #fff;
+  width: 160px;
+  border: #ccc solid 1px;
+  display: none;
+  z-index: 10;
+}
+.dropdown__item{
+  padding: 15px;
+  width: 100%;
+  &:nth-child(n+2){
+    border-top: #ccc solid 1px;
+  }
+}
 /* main */
 /* each pages */
 
@@ -766,6 +792,12 @@ a{
   width: 25%;
   background-color: #d0d0d0;
   border-color: #d0d0d0;
+}
+.recipe__layout{
+  display: flex;
+  align-items: center;
+  max-width: 45%;
+  justify-content: space-between;
 }
 
 /* modal CSS */

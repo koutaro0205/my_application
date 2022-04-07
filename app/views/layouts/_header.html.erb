@@ -10,9 +10,9 @@
       </div>
       <div class="header__menu">
         <ul class="header__menu-list">
-          <li class="header__menu-item"><%= link_to 'レシピを投稿', new_recipe_path, class: 'header__menu-link' %></li>
+          <li class="header__menu-item"><%= link_to 'レシピを投稿', new_recipe_path, class: 'header__menu-link btn' %></li>
           <% if logged_in? %>
-            <li class="header__menu-item"><%= link_to 'お気に入り', favorite_recipes_user_path(current_user), class: 'header__menu-link' %></li>
+            <li class="header__menu-item"><%= link_to 'お気に入り', favorite_recipes_user_path(current_user), class: 'header__menu-link btn' %></li>
           <% end %>
         </ul>
       </div>
@@ -22,9 +22,14 @@
         <ul class="header__nav-list">
           <li class="header__nav-item"><%= link_to 'ホーム', root_path, class: 'header__nav-link' %></li>
         <% if logged_in? %>
-          <li class="header__nav-item"><%= link_to 'ユーザー一覧', users_path, class: 'header__nav-link' %></li>
-          <li class="header__nav-item"><%= link_to current_user.name, current_user, class: 'header__nav-link' %></li>
-          <li class="header__nav-item"><%= link_to 'ユーザー設定', edit_user_path(current_user), class: 'header__nav-link' %></li>
+          <li class="header__nav-item dropdown">
+            <span class="dropdown__menu"><%= current_user.name %></span>
+            <ul class="dropdown__lists">
+              <li class="dropdown__item"><%= link_to '登録情報', current_user, class: 'header__nav-link' %></li>
+              <li class="dropdown__item"><%= link_to 'ユーザー設定', edit_user_path(current_user), class: 'header__nav-link' %></li>
+              <li class="dropdown__item"><%= link_to 'ユーザー一覧', users_path, class: 'header__nav-link' %></li>
+            </ul>
+          </li>
           <li class="header__nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'header__nav-link' %></li>
         <% else %>
           <li class="header__nav-item"><%= link_to 'ログイン', login_path, class: 'header__nav-link' %></li>

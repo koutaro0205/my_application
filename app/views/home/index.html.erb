@@ -24,5 +24,8 @@
       <%= render @following_recipes %>
     <% end %>
     </ul>
+    <div class="read-more">
+      <%= link_to "もっと見る", following_recipes_path, class: "read-more__btn btn"%>
+    </div>
   </section>
 <% end %>

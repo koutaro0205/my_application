@@ -1,0 +1,12 @@
+<% provide(:title, "フォローしているユーザーのレシピ一覧") %>
+<% if logged_in? %>
+  <section class="section content-width">
+    <h1 class="sectionTitle">フォローしているユーザーのレシピ一覧</h1>
+    <ul class="recipes">
+    <% if @following_recipes.any? %>
+      <%= render @following_recipes %>
+    <% end %>
+    </ul>
+    <%= will_paginate @following_recipes %>
+  </section>
+<% end %>

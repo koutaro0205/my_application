@@ -2,32 +2,39 @@
 <section class="section content-width">
   <h1 class="sectionTitle">こだわりレシピ</h1>
   <h2 class="recipe__title"><%= @recipe.title %></h2>
-  <p class="recipeCard__tag">ズボラポイント：
-    <%= link_to @tag, short_time_path, class: "recipeCard__tag-text1" %>
-  </p>
-  <div class="recipeCard__info">
-    <p class="recipeCard__duration">
-      <%= image_tag 'timer.svg', :alt => '時計の画像' %>
-      <%= @recipe.duration %>分
-    </p>
-    <p class="recipeCard__cost">
-      <%= image_tag 'yen.svg', :alt => 'お金の画像' %>
-      <%= @recipe.cost %>円
-    </p>
+  <div class="recipe__layout">
+    <div class="recipe__layout-userInfo">
+      <div class="recipe__user">
+        <%= link_to user_path(@user), class: 'recipe__user-image' do %>
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image, :class => "image" %>
+          <% else %>
+            <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+          <% end %>
+        <% end %>
+        <span class="recipe__user-name"><%= link_to @user.name, user_path(@user) %></span>
+      </div>
+      <span class="recipe__timestamp">
+        投稿日：<%= l @recipe.created_at, format: :default %>
+      </span>
+    </div>
+    <div class="recipe__layout-points">
+      <p class="recipeCard__tag">ズボラポイント：
+        <%= link_to @tag, short_time_path, class: "recipeCard__tag-text1" %>
+      </p>
+      <div class="recipeCard__info">
+        <p class="recipeCard__duration">
+          <%= image_tag 'timer.svg', :alt => '時計の画像' %>
+          <%= @recipe.duration %>分
+        </p>
+        <p class="recipeCard__cost">
+          <%= image_tag 'yen.svg', :alt => 'お金の画像' %>
+          <%= @recipe.cost %>円
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="recipe__user">
-    <%= link_to user_path(@user), class: 'recipe__user-image' do %>
-      <% if @user.image.attached? %>
-        <%= image_tag @user.image, :class => "image" %>
-      <% else %>
-        <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
-      <% end %>
-    <% end %>
-    <span class="recipe__user-name"><%= link_to @user.name, user_path(@user) %></span>
-  </div>
-  <span class="recipe__timestamp">
-    投稿日：<%= l @recipe.created_at, format: :default %>
-  </span>
+
   <div class="recipe">
     <div class="recipe__image">
       <% if @recipe.image.attached? %>
@@ -75,7 +82,9 @@
       <button id="openModal">コメントを残す</button>
     </div>
     <div id="modalArea" class="modalArea">
+
       <div id="modalBg" class="modalBg"></div>
+
       <div class="modalWrapper">
         <div class="modalContents">
           <div class="form__inner-modal">
@@ -88,7 +97,7 @@
               <%= f.submit "コメントを投稿する", class: "form__btn btn" %>
             <% end %>
           </div>
-        <div id="closeModal" class="closeModal">×</div>
+        </div>
       </div>
     </div>
   <% end %>

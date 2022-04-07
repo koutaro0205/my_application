@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy, :following]
   before_action :correct_user_recipe, only: [:edit, :update, :destroy]
 
   def index
@@ -74,6 +74,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(tag: 2)
     @title = '格安'
     render 'show_tag'
+  end
+
+  def following
+    # @following_recipes = Recipe.where(user_id: [current_user.following_ids]) if logged_in?
+    @following_recipes = Recipe.where(user_id: [current_user.following_ids]).paginate(page: params[:page])
+    render 'show_following'
   end
 
   private
