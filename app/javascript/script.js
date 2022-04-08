@@ -1,3 +1,5 @@
+// Modal Window
+
 function fadeIn(node, duration) {
   if (getComputedStyle(node).display !== 'none') return;
 
@@ -58,6 +60,8 @@ fadeOutBtnElmt.addEventListener("click", () => {
 });
 });
 
+// slideToggle
+
 const slideUp = (el, duration = 300) => {
   el.style.height = el.offsetHeight + "px";
   el.offsetHeight;
@@ -116,7 +120,6 @@ const slideDown = (el, duration = 300) => {
   }, duration);
 };
 
-// slideToggle
 const slideToggle = (el, duration = 300) => {
   if (window.getComputedStyle(el).display === "none") {
     return slideDown(el, duration);

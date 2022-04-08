@@ -39,17 +39,17 @@
 
       <div class="form__layout">
         <div class="form__layout-item">
-          <%= f.label :duration, "所要時間（分）", class: "form__label-short" %>
+          <%= f.label :duration, "所要時間(分)", class: "form__label-short" %>
           <span class="required">必須</span>
           <%= f.number_field :duration, class: "form__field-short" %>
         </div>
         <div class="form__layout-item">
-          <%= f.label :cost, "一食の値段（円）", class: "form__label-short" %>
+          <%= f.label :cost, "値段(円)", class: "form__label-short" %>
           <span class="required">必須</span>
           <%= f.number_field :cost, class: "form__field-short" %>
         </div>
         <div class="form__layout-item">
-          <%= f.label :tag, "ズボラポイントを選択", class: "form__label-short" %>
+          <%= f.label :tag, "ズボラポイント", class: "form__label-short" %>
           <%= f.select :tag, [['時短レシピ', 1], ['格安レシピ', 2]], { include_blank: true }, { class: "form__field-short" } %>
         </div>
       </div>
