@@ -13,7 +13,9 @@
           <li class="profileCard__user">
             <p class="profileCard__user-name"><%= @user.name %></p>
             <% if @user.recipes.any? %>
-              <p class="profileCard__user-postsCounts">投稿数：<%= @user.recipes.count %></p>
+              <p class="profileCard__user-postsCounts">投稿数 <%= @user.recipes.count %></p>
+            <% else %>
+              <p class="profileCard__user-postsCounts">投稿数 0</p>
             <% end %>
             <%= render 'shared/stats' %>
           </li>
