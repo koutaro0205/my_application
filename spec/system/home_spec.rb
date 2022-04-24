@@ -16,17 +16,53 @@ RSpec.describe "Home", type: :system do
     end
     
     context 'when you have logged in' do
-      before do
-        FactoryBot.send(:user_with_posts, posts_count: 35)
+
+      it 'displays 6 latest recipes' do
+        FactoryBot.send(:user_with_posts, posts_count: 10)
         @user = Recipe.first.user
         @user.password = 'password'
         log_in @user
         visit root_path
+
+        posts_wrapper =
+        within 'ul.recipes-latest' do
+          find_all('li.recipeCard')
+        end
+        expect(posts_wrapper.size).to eq 6
       end
 
-      # it 'displays 6 latest posts'
-      # it 'displays 6 posts of following users'
-      # it 'displays 6 popular posts'
+      it 'displays 6 recipes with many favorites' do
+        @user = FactoryBot.send(:create_favorites)
+        log_in @user
+        visit root_path
+
+        posts_wrapper =
+        within 'ul.recipes-favorites' do
+          find_all('li.recipeCard')
+        end
+        expect(posts_wrapper.size).to eq 6
+      end
+
+      it 'displays 6 recipes of following users' do
+        @user = FactoryBot.send(:create_following_recipes)
+        log_in @user
+        visit root_path
+
+        posts_wrapper =
+        within 'ul.recipes-following' do
+          find_all('li.recipeCard')
+        end
+        expect(posts_wrapper.size).to eq 6
+      end
+
+      it 'displays a total of 18 recipes' do
+        @user = FactoryBot.send(:create_recipe_lists)
+        log_in @user
+        visit root_path
+
+        posts_wrapper = find_all('li.recipeCard')
+        expect(posts_wrapper.size).to eq 18
+      end
     end
   end
 end

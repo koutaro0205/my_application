@@ -97,12 +97,45 @@ RSpec.describe User, type: :model do
     expect(user.recipes.length).to eq 5
   end
 
-  # describe '#authenticated?' do
-  #   it 'digestがnilならfalseを返すこと' do
-  #     user = FactoryBot.build(:user)
-  #     expect(user.authenticated?('')).to be_falsy
-  #   end
-  # end
+  #ユーザーは多くのコメントを持つことができる
+  it "can have many comments" do
+    user = FactoryBot.create(:user, :with_comments)
+    expect(user.comments.length).to eq 5
+  end
+
+  #ユーザーは多くのお気に入りを持つことができる
+  it "can have many favorites" do
+    user = FactoryBot.create(:user, :with_favorites)
+    expect(user.favorites.length).to eq 7
+  end
+
+  describe '#favorite' do
+    let(:recipe_by_user1) {FactoryBot.create(:recipe_by_user1)}
+    let(:recipe_by_user2) {FactoryBot.create(:recipe_by_user2)}
+    let(:user1){recipe_by_user1.user}
+    let(:user2){recipe_by_user2.user}
+
+    it 'sets favorites? to true if it is a favorite' do
+      expect(user1.favorite?(recipe_by_user2)).to_not be_truthy
+      user1.favorite(recipe_by_user2)
+      expect(user1.favorite?(recipe_by_user2)).to be_truthy
+      expect(recipe_by_user2.user_favorites.include?(user1)).to be_truthy
+    end
+
+    it 'sets favorites? to false if it is a unfavorite' do
+      user1.favorite(recipe_by_user2)
+      expect(user1.favorite?(recipe_by_user2)).to_not be_falsey
+      user1.unfavorite(recipe_by_user2)
+      expect(user1.favorite?(recipe_by_user2)).to be_falsey
+    end
+  end
+
+  describe '#authenticated?' do
+    let(:user) { FactoryBot.build(:user) }
+    it 'returns false if digest is nil' do
+      expect(user.authenticated?(:remember, '')).to be_falsy
+    end
+  end
 
   describe '#follow and #unfollow' do
     let(:user) { FactoryBot.create(:user) }

@@ -23,3 +23,17 @@ def create_relationships
     user
   end
 end
+
+def create_following_recipes
+  10.times do
+    FactoryBot.create(:continuous_users)
+  end
+ 
+  FactoryBot.create(:user) do |user|
+    User.all[0...-1].each do |other|
+      FactoryBot.create(:following, follower_id: user.id, followed_id: other.id)
+      FactoryBot.create(:continuous_recipes, user_id: other.id)
+    end
+    user
+  end
+end

@@ -1,4 +1,7 @@
-<%= link_to recipe_favorite_path(@recipe), method: :delete, remote: false do %>
-  <span class="favorite">お気に入り解除</span>
-  <%= image_tag 'favorite.svg', :alt => 'お気に入り状態' %>
+<%= form_with(model: current_user.favorites.find_by(recipe_id: @recipe.id),
+            html: { method: :delete }, local: false) do |f| %>
+  <div class="recipe__favorite-layout">
+    <%= f.submit "お気に入り解除", class: "favorite" %>
+    <%= image_tag 'favorite.svg', :alt => 'お気に入り状態' %>
+  </div>
 <% end %>

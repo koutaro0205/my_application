@@ -29,9 +29,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  # validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-  #                                     message: "画像フォーマットが有効ではありません（有効：jpeg, gif, png）" },
-  #                   size: { less_than: 5.megabytes, message: "画像サイズの上限は5MBです" }
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -90,6 +87,18 @@ class User < ApplicationRecord
   def favorite?(recipe)
     self.favorites.exists?(recipe_id: recipe.id)
   end
+
+  def favorite(recipe)
+    favorite_recipes << recipe
+  end
+
+  def unfavorite(recipe)
+    favorites.find_by(recipe_id: recipe.id).destroy
+  end
+
+  # def favorite?(user)
+  #   favorites.where(user_id: user.id).exists?
+  # end
 
   private
     def downcase_email

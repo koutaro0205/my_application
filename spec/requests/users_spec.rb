@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "GET /signup" do
+  describe "GET /signup #new" do
     it "responds successfully" do
       get signup_path
       expect(response).to have_http_status "200"
@@ -13,7 +13,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe 'GET /users' do
+  describe 'GET /users #index' do
     it 'redirects to the login page if you are not a logged-in user' do
       get users_path
       expect(response).to redirect_to login_path
@@ -41,7 +41,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe 'get /users/{id}' do
+  describe 'get /users/{id} #show' do
     it 'redirects to root path if it is not enabled' do
       user = FactoryBot.create(:user)
       not_activated_user = FactoryBot.create(:not_activated_user)
@@ -157,7 +157,6 @@ RSpec.describe "Users", type: :request do
     let!(:user) { FactoryBot.create(:user) }
 
     it 'cannot update the admin attribute' do
-      # userはこの後adminユーザになるので違うユーザにしておく
       log_in user = FactoryBot.create(:other_user)
       expect(user).to_not be_admin
  
@@ -188,7 +187,7 @@ RSpec.describe "Users", type: :request do
         expect(response.body).to include full_title('ユーザー設定')
       end
 
-      it 'displays 「4つの入力内容が正しくありません。」' do
+      it 'displays an error message' do
         expect(response.body).to include '4つの入力内容が正しくありません。'
       end
     end

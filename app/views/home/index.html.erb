@@ -1,7 +1,7 @@
 <% provide(:title, "ホーム") %>
 <section class="section content-width">
   <h1 class="sectionTitle">最近のレシピ</h1>
-  <ul class="recipes">
+  <ul class="recipes recipes-latest">
     <%= render @recipes %>
   </ul>
   <div class="read-more">
@@ -9,8 +9,8 @@
   </div>
 </section>
 <section class="section content-width">
-  <h1 class="sectionTitle">人気のズボラレシピ</h1>
-  <ul class="recipes">
+  <h1 class="sectionTitle">お気に入りの多いレシピ</h1>
+  <ul class="recipes recipes-favorites">
     <% if @favorite_recipes.any? %>
       <%= render @favorite_recipes %>
     <% end %>
@@ -19,13 +19,13 @@
 <% if logged_in? %>
   <section class="section content-width">
     <h1 class="sectionTitle">フォローしているユーザーのレシピ</h1>
-    <ul class="recipes">
+    <ul class="recipes recipes-following">
     <% if @following_recipes.any? %>
       <%= render @following_recipes %>
     <% end %>
     </ul>
     <div class="read-more">
-      <%= link_to "もっと見る", following_recipes_path, class: "read-more__btn btn"%>
+      <%= link_to "もっと見る", following_user_recipes_path, class: "read-more__btn btn"%>
     </div>
   </section>
 <% end %>

@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Homes", type: :request do
-  let(:base_title) { 'ZuboRecipes' }
+RSpec.describe "Home", type: :request do
 
-  describe "#home" do
+  describe "GET #home" do
     it "responds successfully" do
       get root_path
       expect(response).to be_successful

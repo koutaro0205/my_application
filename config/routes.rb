@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   end
   resources :recipes do
     resources :comments, only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
     collection do
-      get :following
+      get :user_favorites, :following_user
     end
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 end

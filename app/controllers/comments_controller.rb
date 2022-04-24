@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       flash[:success] = "コメントが投稿されました。"
       redirect_to @recipe
     else
-      flash[:danger] = 'コメントの投稿に失敗しました。再度入力して下さい。'
+      flash[:danger] = 'コメントを140文字以内で入力してください'
       redirect_to @recipe
     end
   end

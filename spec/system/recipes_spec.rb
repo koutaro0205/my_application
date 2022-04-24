@@ -159,7 +159,7 @@ RSpec.describe "Recipes", type: :system do
       expect(page).to_not have_content 'レシピタイトル'
     end
 
-    it 'cannot delete a recipe'  do
+    it 'can edit a recipe'  do
       expect(page).to have_content 'レシピを編集する'
 
       click_link 'レシピを編集する'
@@ -176,6 +176,18 @@ RSpec.describe "Recipes", type: :system do
       @other_user = FactoryBot.create(:other_user)
       visit user_path(@other_user)
       expect(page).to_not have_link 'レシピを編集する'
+    end
+  end
+
+  describe 'recipes#tag' do
+    it 'displays a short_time page' do
+      visit short_time_path
+      expect(page).to have_content '時短レシピ一覧'
+    end
+
+    it 'displays a low_cost page' do
+      visit low_cost_path
+      expect(page).to have_content '格安レシピ一覧'
     end
   end
 end

@@ -37,4 +37,18 @@ RSpec.describe "Users", type: :system do
       expect(page).to_not have_link 'ユーザーを削除（管理者権限）'
     end
   end
+
+  describe '#edit' do
+    it 'can attach an image' do
+      user = FactoryBot.create(:user)
+      log_in user
+      click_link 'ユーザー設定'
+
+      attach_file "user[image]", "#{Rails.root}/spec/files/testImage.jpeg"
+      click_button '登録情報を更新'
+
+      attached_user = User.first
+      expect(attached_user.image).to be_attached
+    end
+  end
 end

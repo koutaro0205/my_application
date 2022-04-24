@@ -44,6 +44,11 @@ RSpec.describe Recipe, type: :model do
     expect(recipe_with.comments.length).to eq 5
   end
 
+  it "can have many favorites" do
+    recipe = FactoryBot.create(:recipe, :with_favorites)
+    expect(recipe.favorites.length).to eq 5
+  end
+
   it 'sorts from newest post' do
     FactoryBot.send(:user_with_posts)
     expect(FactoryBot.create(:most_recent)).to eq Recipe.first

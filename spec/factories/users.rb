@@ -10,6 +10,18 @@ FactoryBot.define do
     trait :with_recipes do
       after(:create) { |user| create_list(:recipe, 5, user: user) }
     end
+
+    trait :with_comments do
+      after(:create) { |user| create_list(:comment, 5, user: user) }
+    end
+
+    trait :with_favorites do
+      after(:create) { |user| create_list(:favorite, 7, user: user) }
+    end
+
+    trait :with_following do
+      after(:create) { |user| create_list(:following, 7, user: user) }
+    end
   end
 
   factory :continuous_users, class: User do
