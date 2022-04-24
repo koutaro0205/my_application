@@ -13,14 +13,15 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: Koutaro0205
+  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
   host: localhost
-  # socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: my_portfolio_development
+  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,6 +29,8 @@ development:
 test:
   <<: *default
   database: my_portfolio_test
+  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -52,5 +55,5 @@ test:
 production:
   <<: *default
   database: my_portfolio_production
-  username: my_portfolio
-  password: <%= ENV["MY_PORTFOLIO_DATABASE_PASSWORD"] %>
+  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
