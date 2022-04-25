@@ -1,24 +1,54 @@
 # README
-# ※READMEの情報は今後変更します（現在：デフォルト）
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション名
+『ZuboRecipes』
 
-Things you may want to cover:
+## 概要・コンセプト
+簡単で安価なレシピを探したり、気軽に投稿できるレシピサイトです。
 
-* Ruby version :3.1.0
+## 目的
+簡単で安価なレシピが多く掲載されるアプリ構成にすることで、
+時間やお金がない人でも自炊するきっかけとなるようなプラットフォームです。
 
-* System dependencies
+## 主なターゲット
+「忙しく時間がない中で、作るのに時間をかけられない」
+「食材にかけられるお金が少ない」
+「食材や調味料を揃えるのが手間に感じてしまう」
+「一般的なレシピサイトでは凝った料理が多くて作れそうにない」
+「外食や宅配ばかりで、なかなか自炊するきっかけがない」
 
-* Configuration
+これらの悩みを持った方々が気軽に使えるアプリです
 
-* Database creation
+## 使い方
+* トップページから投稿されているレシピ一覧が見れます。（ログイン不要）
+* レシピをクリックすると材料や作り方詳細が見れます。（ログイン不要）
+* ヘッダーの検索バーからキーワードを入力するとレシピを検索できます。
+* ログインするとレシピを投稿できます。
+その他、コメントの追加・レシピのお気に入り登録・気に入ったユーザーのフォローなどができます。
 
-* Database initialization
+## 機能
+* ユーザー登録機能
+* ログイン機能
+* アカウント有効化機能(メイラー使用)
+* ユーザー情報を保持する機能(次回以降も継続的にログイン)
+* ユーザーパスワードリセット機能(メイラー使用)
+* レシピ投稿機能
+* 画像投稿機能
+* お気に入り投稿機能
+* ユーザーフォロー機能
+* レシピ検索機能
+* 特定条件でのレシピ表示機能（フォローしている、お気に入り登録している）
+* コメント投稿機能
+* ページネーション機能
 
-* How to run the test suite
+## 使用技術
+* HTML/CSS(sass)
+* JavaScript
+* Ruby 3.1.0
+* Ruby on Rails 7.0.2
+* MySQL
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## テスト
+RSpec
+* 単体テスト（model）
+* 機能テスト（request）
+* 統合テスト（capybara）

@@ -5,11 +5,7 @@
     <h2 class="subTitle">現在のユーザー</h2>
       <ul class="profileCard__info">
         <li class="profileCard__image">
-          <% if current_user.image.attached? %>
-            <%= image_tag current_user.image %>
-          <% else %>
-            <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
-          <% end %>
+          <%= render 'users/current_user_image'%>
         </li>
         <li class="profileCard__user">
           <p class="profileCard__user-name"><%= current_user.name %></p>

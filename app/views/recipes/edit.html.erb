@@ -4,11 +4,7 @@
   <h2 class="recipe__title"><%= @recipe.title %></h2>
   <div class="recipe">
     <div class="recipe__image">
-      <% if @recipe.image.attached? %>
-        <%= image_tag @recipe.image %>
-      <% else %>
-        <%= image_tag 'noimage.jpg', class: "image", alt: 'デフォルト画像' %>
-      <% end %>
+      <%= render 'recipes/recipe_image' %>
     </div>
     <div class="recipe__info">
       <div class="recipe__ingredient">

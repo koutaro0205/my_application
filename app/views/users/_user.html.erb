@@ -1,7 +1,7 @@
 <li class="user__item">
   <div class="user__image">
     <% if user.image.attached? %>
-      <%= image_tag user.image %>
+      <%= image_tag user.image, :class => "image" %>
     <% else %>
       <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
     <% end %>

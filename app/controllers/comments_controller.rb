@@ -32,10 +32,6 @@ class CommentsController < ApplicationController
 
     def correct_user_comment
       @comment = Comment.find(params[:id])
-      if @comment.user == current_user
-        true
-      else
-        redirect_to root_url
-      end
+      redirect_to(root_url) unless @comment.user == current_user
     end
 end

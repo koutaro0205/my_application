@@ -1,0 +1,5 @@
+<% if current_user.image.attached? %>
+          <%= image_tag current_user.image %>
+<% else %>
+  <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+<% end %>

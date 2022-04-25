@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def logged_in_user
-    if logged_in?
-      true
-    else
+    unless logged_in?
       session[:forwarding_url] = request.original_url if request.get?
       flash[:danger] = "ログインが必要です"
       redirect_to login_url

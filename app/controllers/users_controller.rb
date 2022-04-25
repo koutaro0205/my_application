@@ -82,17 +82,11 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find_by(id: params[:id])
-      if current_user?(@user)
-        true
-      else
-        redirect_to root_url
-      end
+      redirect_to(root_url) unless current_user?(@user)
     end
 
     def admin_user
-      if current_user.admin?
-        true
-      else
+      unless current_user.admin?
         flash[:danger] = "権限がありません"
         redirect_to root_url
       end

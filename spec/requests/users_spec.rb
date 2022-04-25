@@ -62,50 +62,42 @@ RSpec.describe "Users", type: :request do
     end
 
     context 'when the value is invalid' do
-        before do
-          ActionMailer::Base.deliveries.clear
-        end
+      before do
+        ActionMailer::Base.deliveries.clear
+      end
 
-        let(:user_params) { { user: { name: 'Example User',
-                                      email: 'user@example.com',
-                                      password: 'password',
-                                      password_confirmation: 'password',
-                                        } } }
+      let(:user_params) { { user: { name: 'Example User',
+                                    email: 'user@example.com',
+                                    password: 'password',
+                                    password_confirmation: 'password',
+                                      } } }
 
-        it 'registers a user' do
-          expect {
-            post users_path, params: user_params
-          }.to change(User, :count).by 1
-        end
-
-        it 'redirects to' do
+      it 'registers a user' do
+        expect {
           post users_path, params: user_params
-          user = User.last
-          expect(response).to redirect_to root_path
-        end
+        }.to change(User, :count).by 1
+      end
 
-        it 'displays a flash message' do
-          post users_path, params: user_params
-          expect(flash).to be_any
-        end
+      it 'redirects to' do
+        post users_path, params: user_params
+        user = User.last
+        expect(response).to redirect_to root_path
+      end
 
-        it 'contains one email sent' do
-          post users_path, params: user_params
-          expect(ActionMailer::Base.deliveries.size).to eq 1
-        end
-  
-        it 'does not activate at registration' do
-          post users_path, params: user_params
-          expect(User.last).to_not be_activated
-        end
+      it 'displays a flash message' do
+        post users_path, params: user_params
+        expect(flash).to be_any
+      end
 
-      # it 'is not logged in' do
-      #   user = FactoryBot.create(:user)
-      #   post login_path, params: { session: { email: user.email,
-      #                                       password: user.password } }
-      #   expect(logged_in?).to_not be_truthy
-      # end
+      it 'contains one email sent' do
+        post users_path, params: user_params
+        expect(ActionMailer::Base.deliveries.size).to eq 1
+      end
 
+      it 'does not activate at registration' do
+        post users_path, params: user_params
+        expect(User.last).to_not be_activated
+      end
     end
   end
 

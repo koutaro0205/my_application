@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
   before_action :correct_user_recipe, only: [:edit, :update, :destroy]
 
   def index
-    # @recipes = feed.paginate(page: params[:page])
     @recipes = Recipe.paginate(page: params[:page])
   end
 
@@ -23,7 +22,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = current_user.recipes.build if logged_in?
-    # @recipe = Recipe.new
   end
 
   def create
@@ -89,10 +87,6 @@ class RecipesController < ApplicationController
     def correct_user_recipe
       @recipe = Recipe.find(params[:id])
       @user = @recipe.user
-      if current_user?(@user)
-        true
-      else
-        redirect_to root_url
-      end
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

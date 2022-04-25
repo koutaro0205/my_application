@@ -71,7 +71,7 @@ RSpec.describe "PasswordResets", type: :request do
       expect(response).to redirect_to root_path
     end
 
-    it '2時間以上経過していれば、newにリダイレクトされること' do
+    it 'redirects to new password_reset path' do
       @user.update_attribute(:reset_sent_at, 3.hours.ago)
       get edit_password_reset_path(@user.reset_token, email: @user.email)
       expect(response).to redirect_to new_password_reset_path

@@ -2,19 +2,15 @@
 <section class="section content-width">
   <div class="container">
     <div class="profileCard profileCard__users">
-    <h2 class="subTitle">現在のユーザー</h2>
+    <h2 class="subTitle">ユーザー情報</h2>
       <ul class="profileCard__info">
         <li class="profileCard__image">
-          <% if current_user.image.attached? %>
-            <%= image_tag current_user.image %>
-          <% else %>
-            <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
-          <% end %>
+          <%= render 'users/user_image'%>
         </li>
         <li class="profileCard__user">
-          <p class="profileCard__user-name"><%= current_user.name %></p>
-          <% if current_user.recipes.any? %>
-            <p class="profileCard__user-postsCounts">投稿数：<%= current_user.recipes.count %></p>
+          <p class="profileCard__user-name"><%= @user.name %></p>
+          <% if @user.recipes.any? %>
+            <p class="profileCard__user-postsCounts">投稿数：<%= @user.recipes.count %></p>
           <% end %>
         </li>
       </ul>
