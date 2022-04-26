@@ -53,7 +53,12 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
+  # <<: *default
+  adapter: mysql2
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://railsguides.jp/configuring.html#データベース接続をプールする
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: my_portfolio_production
   username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
   password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>

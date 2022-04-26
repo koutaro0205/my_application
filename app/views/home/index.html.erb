@@ -2,7 +2,11 @@
 <section class="section content-width">
   <h1 class="sectionTitle">最近のレシピ</h1>
   <ul class="recipes recipes-latest">
-    <%= render @recipes %>
+    <% if @recipes.any? %>
+      <%= render @recipes %>
+    <% else %>
+      <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
+    <% end %>
   </ul>
   <div class="read-more">
     <%= link_to "レシピ一覧へ", recipes_path ,class: "read-more__btn btn"%>
@@ -13,6 +17,8 @@
   <ul class="recipes recipes-favorites">
     <% if @favorite_recipes.any? %>
       <%= render @favorite_recipes %>
+    <% else %>
+      <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
     <% end %>
   </ul>
 </section>
@@ -22,6 +28,8 @@
     <ul class="recipes recipes-following">
     <% if @following_recipes.any? %>
       <%= render @following_recipes %>
+    <% else %>
+      <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
     <% end %>
     </ul>
     <div class="read-more">

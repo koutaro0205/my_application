@@ -22,7 +22,11 @@
     <section class="section content-width">
       <h1 class="sectionTitle">私のレシピ一覧</h1>
       <ul class="recipes">
-        <%= render @recipes %>
+        <% if @recipes.any? %>
+          <%= render @recipes %>
+        <% else %>
+          <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
+        <% end %>
       </ul>
       <%= will_paginate @recipes %>
     </section>

@@ -9,13 +9,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.activated?
-      true
-    else
+    @recipes = @user.recipes.paginate(page: params[:page])
+    unless @user.activated?
       flash[:warning] = "有効化されていないユーザーです"
       redirect_to root_path
     end
-    @recipes = @user.recipes.paginate(page: params[:page])
   end
 
   def new
