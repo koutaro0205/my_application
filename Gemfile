@@ -14,7 +14,7 @@ gem 'mini_magick', '4.9.5'
 gem 'will_paginate', '3.3.1'
 gem 'faker', '2.20.0'
 gem 'active_storage_validations', '0.8.2'
-gem 'aws-sdk-s3', '1.46.0', require: false
+gem 'aws-sdk-s3', '1.48.0', require: false
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
