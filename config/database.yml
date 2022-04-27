@@ -55,7 +55,7 @@ test:
 production:
   # <<: *default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   # For details on connection pooling, see Rails configuration guide
   # https://railsguides.jp/configuring.html#データベース接続をプールする
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
