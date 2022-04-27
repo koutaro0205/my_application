@@ -59,7 +59,8 @@ production:
   # For details on connection pooling, see Rails configuration guide
   # https://railsguides.jp/configuring.html#データベース接続をプールする
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: heroku_906e83c15f6552e
-  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
-  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  url: <%= ENV['MYSQL_URL'] %>
