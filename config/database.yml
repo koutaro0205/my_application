@@ -62,4 +62,4 @@ production:
   database: my_portfolio_production
   username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
   password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
-  url: <%= ENV['CLEARDB_DATABASE_URL']&.sub(/\Amysql/, 'mysql2') %>
+  url: <%= ENV['DATABASE_URL'] %>

@@ -4,7 +4,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
     # Use Active Record's configured type for primary and foreign keys
     primary_key_type, foreign_key_type = primary_and_foreign_key_types
 
-    create_table :active_storage_blobs, id: primary_key_type do |t|
+    create_table :active_storage_blobs, id: primary_key_type, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
       t.string   :key,          null: false
       t.string   :filename,     null: false
       t.string   :content_type
