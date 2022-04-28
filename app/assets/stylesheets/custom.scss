@@ -145,6 +145,10 @@ a{
     transition: .3s;
   }
 }
+input[type="button"],input[type="text"],input[type="submit"],input[type="image"],textarea{
+  -webkit-appearance: none;
+  border-radius: 4px;
+}
 .content-width{
   max-width: 1100px;
   margin: 0 auto;
@@ -164,7 +168,7 @@ a{
   font-size: 2.5rem;
   margin: 25px 0;
   @include mobile{
-    font-size: 2.0rem;
+    font-size: 1.8rem;
   }
 }
 .subTitle{
@@ -190,7 +194,7 @@ a{
   border-radius: 4px;
   cursor: pointer;
   @include mobile{
-    padding: 4px 6px;
+    padding: 4px 3px;
     font-size: 12px;
   }
 }
@@ -352,7 +356,7 @@ a{
   @include mobile{
     position: relative;
     margin-bottom: 75px;
-    height: 80px;
+    height: 66px;
     border-bottom: #ccc solid 1px;
   }
 }
@@ -379,7 +383,7 @@ a{
   }
   @include mobile{
     position: absolute;
-    top: 88px;
+    top: 74px;
     left: 15px;
     width: 92%;
   }

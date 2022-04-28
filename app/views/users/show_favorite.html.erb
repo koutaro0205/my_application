@@ -4,6 +4,8 @@
     <ul class="recipes">
     <% if @favorite_recipes.any? %>
       <%= render @favorite_recipes %>
+    <% else %>
+      <p class="nothing">お気に入りの投稿はありません。</p>
     <% end %>
     </ul>
 </section>
