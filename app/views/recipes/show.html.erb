@@ -93,5 +93,68 @@
   <% end %>
 
 </section>
+<script>
+// Modal Window
+
+function fadeIn(node, duration) {
+  if (getComputedStyle(node).display !== 'none') return;
+
+  if (node.style.display === 'none') {
+    node.style.display = '';
+  } else {
+    node.style.display = 'block';
+  }
+  node.style.opacity = 0;
+
+  var start = performance.now();
+
+  requestAnimationFrame(function tick(timestamp) {
+    var easing = (timestamp - start) / duration;
+
+    node.style.opacity = Math.min(easing, 1);
+
+    if (easing < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      node.style.opacity = '';
+    }
+  });
+}
+
+function fadeOut(node, duration) {
+  node.style.opacity = 1;
+
+  var start = performance.now();
+
+  requestAnimationFrame(function tick(timestamp) {
+    var easing = (timestamp - start) / duration;
+
+    node.style.opacity = Math.max(1 - easing, 0);
+
+    if (easing < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      node.style.opacity = '';
+      node.style.display = 'none';
+    }
+  });
+}
+
+window.addEventListener("load",function(){
+  var fadeInBtnElmt  = document.getElementById('openModal');
+  if (!fadeInBtnElmt){ return false;}
+
+  var fadeOutBtnElmt = document.getElementById("modalBg");
+  if (!fadeOutBtnElmt){ return false;}
+
+  fadeInBtnElmt.addEventListener("click", () => {
+    fadeIn(document.getElementById('modalArea'), 300);
+  });
+
+  fadeOutBtnElmt.addEventListener("click", () => {
+    fadeOut(document.getElementById('modalArea'), 300);
+  });
+});
+</script>
 
 
