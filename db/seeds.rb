@@ -10,7 +10,6 @@ User.create!(name:  "Guest User",
   email: "guestuser@example.com",
   password:              "guestuser",
   password_confirmation: "guestuser",
-  admin: true,
   activated: true,
   activated_at: Time.zone.now)
 
@@ -31,4 +30,15 @@ User.create!(name:  "Admin User",
                 password:              password,
                 password_confirmation: password,
                 activated: true)
+end
+
+users = User.order(:created_at).take(10)
+6.times do
+  title = "レシピのタイトル"
+  ingredient = "・材料1\r\n・材料2\r\n・材料3\r\n・材料4\r\n\r\n・調味料1\r\n・調味料2\r\n・調味料3"
+  body = "レシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。レシピの作り方・説明が入ります。レシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。レシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。レシピの作り方・説明が入ります。レシピの作り方・説明が入ります。レシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。レシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。レシピの作り方・説明が入ります。\r\nレシピの作り方・説明が入ります。レシピの作り方・説明が入ります。レシピの作り方・説明が入ります。レシピの作り方・説明が入ります。"
+  cost = 900
+  duration = 20
+  tag = 1
+  users.each { |user| user.recipes.create!(title: title, ingredient: ingredient, body: body, cost: cost, duration: duration, tag: tag) }
 end

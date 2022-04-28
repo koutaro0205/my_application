@@ -167,6 +167,8 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 .sectionTitle{
   font-size: 2.5rem;
   margin: 25px 0;
+  border-left: solid 6px $fontColor;
+  padding-left: 6px;
   @include mobile{
     font-size: 1.8rem;
   }
@@ -1210,7 +1212,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 /* pagenation */
 
 .pagination{
-  margin-top: 20px;
+  margin-top: 45px;
   text-align: center;
   .next_page{
     &::after{
@@ -1223,12 +1225,17 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
     }
   }
   .current{
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     display: inline-block;
     padding: 10px;
     margin-right: 8px;
+    margin-top: 5px;
     border: #000 solid 0.5px;
-    background-color: $baseColor
+    background-color: $baseColor;
+    @include mobile{
+      font-size: 1.0rem;
+      padding: 6px;
+    }
   }
   span{
     display: inline-block;

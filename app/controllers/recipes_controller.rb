@@ -58,7 +58,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword]).paginate(page: params[:page])
     @keyword = params[:keyword]
   end
 

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recipes = @user.recipes.paginate(page: params[:page])
+    @recipes = @user.recipes.paginate(page: params[:page], per_page: 9)
     unless @user.activated?
       flash[:warning] = "有効化されていないユーザーです"
       redirect_to root_path
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   def favorite_recipes
     @title = "あなたのお気に入りレシピ"
-    @favorite_recipes = current_user.favorite_recipes.paginate(page: params[:page])
+    @favorite_recipes = current_user.favorite_recipes.paginate(page: params[:page], per_page: 9)
     render 'show_favorite'
   end
 
