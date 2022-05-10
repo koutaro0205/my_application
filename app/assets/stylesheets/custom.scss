@@ -663,10 +663,11 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
     @include mobile{
       width: 35px;
       height: 35px;
-      border-radius: 50%;
     }
   }
   @include mobile{
@@ -1064,6 +1065,8 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 }
 .comments__user-image{
   img{
+    border-radius: 50%;
+    object-fit: cover;
     width: 100px;
     height: 100px;
     @include mobile{
@@ -1078,6 +1081,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   @include mobile{
     margin-top: 6px;
     text-align: initial;
+    font-size: 1.0rem;
   }
 }
 .comments__content{
