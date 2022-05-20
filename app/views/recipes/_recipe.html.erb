@@ -1,37 +1,4 @@
 <li class="recipeCard">
-  <%= link_to recipe_path(recipe), class: 'recipeCard__image' do %>
-    <% if recipe.image.attached? %>
-      <%= image_tag recipe.image, :class => "image" %>
-    <% else %>
-      <%= image_tag 'noimage.jpg', :class => "image", :alt => 'デフォルト画像' %>
-    <% end %>
-  <% end %>
-
-  <h2 class="recipeCard__title"><%= link_to recipe.title, recipe_path(recipe) %></h2>
-
-  <% if recipe.tag == 1 %>
-    <p class="recipeCard__tag">ズボラポイント：
-      <%= link_to "時短", short_time_path, class: "recipeCard__tag-text1" %>
-    </p>
-  <% elsif recipe.tag == 2 %>
-    <p class="recipeCard__tag">ズボラポイント：
-      <%= link_to "格安", low_cost_path, class: "recipeCard__tag-text2" %>
-    </p>
-  <% else %>
-    <% false %>
-  <% end %>
-
-  <div class="recipeCard__info">
-    <p class="recipeCard__duration">
-      <%= image_tag 'timer.svg', :alt => '時計の画像' %>
-      <%= recipe.duration %>分
-    </p>
-    <p class="recipeCard__cost">
-      <%= image_tag 'yen.svg', :alt => 'お金の画像' %>
-      <%= recipe.cost %>円
-    </p>
-  </div>
-
   <div class="recipeCard__user">
     <%= link_to user_path(recipe.user), class: 'recipeCard__user-image' do %>
       <% if recipe.user.image.attached? %>
@@ -43,7 +10,42 @@
     <span class="recipeCard__user-name"><%= link_to recipe.user.name, recipe.user %></span>
   </div>
 
-  <span class="recipeCard__timestamp">
-    投稿日：<%= l recipe.created_at, format: :default %>
-  </span>
+  <%= link_to recipe_path(recipe), class: 'recipeCard__image' do %>
+    <% if recipe.image.attached? %>
+      <%= image_tag recipe.image, :class => "image" %>
+    <% else %>
+      <%= image_tag 'noimage.jpg', :class => "image", :alt => 'デフォルト画像' %>
+    <% end %>
+  <% end %>
+
+  <div class="recipeCard__info">
+    <h2 class="recipeCard__title"><%= link_to recipe.title, recipe_path(recipe) %></h2>
+
+    <% if recipe.tag == 1 %>
+      <p class="recipeCard__tag">ズボラポイント：
+        <%= link_to "時短", short_time_path, class: "recipeCard__tag-text1" %>
+      </p>
+    <% elsif recipe.tag == 2 %>
+      <p class="recipeCard__tag">ズボラポイント：
+        <%= link_to "格安", low_cost_path, class: "recipeCard__tag-text2" %>
+      </p>
+    <% else %>
+      <% false %>
+    <% end %>
+
+    <div class="recipeCard__performance">
+      <p class="recipeCard__duration">
+        <%= image_tag 'timer.svg', :alt => '時計の画像' %>
+        <%= recipe.duration %>分
+      </p>
+      <p class="recipeCard__cost">
+        <%= image_tag 'yen.svg', :alt => 'お金の画像' %>
+        <%= recipe.cost %>円
+      </p>
+    </div>
+
+    <span class="recipeCard__timestamp">
+      投稿日：<%= l recipe.created_at, format: :default %>
+    </span>
+  </div>
 </li>

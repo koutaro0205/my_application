@@ -73,3 +73,16 @@ slideToggleBtn.addEventListener("click", () => {
   slideToggle(el, 300);
   return false;
 });
+
+// window.addEventListener("load",function(){
+//   const el = document.querySelector('.dropdown__lists');
+//   if (!el){ return false;}
+
+//   const slideToggleBtn = document.querySelector(".dropdown__menu");
+//   if (!slideToggleBtn){ return false;}
+
+//   slideToggleBtn.addEventListener("click", () => {
+//     slideToggle(el, 300);
+//     return false;
+//   });
+// });

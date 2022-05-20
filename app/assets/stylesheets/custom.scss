@@ -158,8 +158,31 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
     padding-right: 15px;
   }
 }
+// .ph_br{
+//   display: none;
+//   @include mobile{
+//     display: block;
+//   }
+// }
 .image{
   width: 100%;
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.main-contents{
+  width: 73%;
+  @include mobile{
+    width: 100%;
+  }
+}
+.sidebar{
+  width: 25%;
+  @include mobile{
+    width: 100%;
+  }
 }
 .section{
   margin-bottom: 50px;
@@ -176,6 +199,8 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 .subTitle{
   font-size: 2.2rem;
   margin: 25px 0;
+  border-left: solid 6px $fontColor;
+  padding-left: 6px;
   @include mobile{
     font-size: 1.8rem;
     margin: 20px 0;
@@ -449,6 +474,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 .header__nav__inner{
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
 }
 .header__nav-list{
   display: flex;
@@ -458,7 +484,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   &:nth-child(n+2){
     margin-left: 35px;
     @include mobile{
-        margin-left: 15px;
+        margin-left: 25px;
     }
   }
   margin-top: 15px;
@@ -470,6 +496,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   font-size: 1.4rem;
   @include mobile{
     font-size: 1.2rem;
+    padding: 15px 0;
   }
 }
 .dropdown{
@@ -525,6 +552,10 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 .main{
   margin-top: 50px;
   margin-bottom: 50px;
+  @include mobile{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 }
 
 /* login page */
@@ -557,26 +588,150 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 
 /* top page */
 
+// change tabs
+.tab-group{
+  display: flex;
+  justify-content: center;
+  border-bottom: #ccc solid 1px;
+  margin-right: 10px;
+  margin-bottom: 60px;
+  @include mobile{
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+}
+.tab{
+  flex-grow: 1;
+  padding: 12px 0;
+  list-style:none;
+  border: transparent;
+  text-align:center;
+  font-weight: bold;
+  cursor: pointer;
+  @include mobile{
+    flex-grow: initial;
+    width: 33%;
+    padding-left: 5px;
+  }
+  &:not(.is-active){
+    &:hover{
+      transition: all 0.2s ease-out;
+      border: solid 1px #ccc;
+      border-bottom: transparent;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+  }
+}
+.panel{
+  display:none;
+}
+.tab.is-active{
+  color: #000;
+  background-color: $baseColor;
+  transition: all 0.2s ease-out;
+  border: solid 1px #ccc;
+  border-bottom: transparent;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  & > span{
+    display: inline-block;
+    border-left: solid 6px $fontColor;
+    padding-left: 6px;
+    @include mobile{
+      border-left: solid 3px $fontColor;
+      padding-left: 3px;
+    }
+  }
+}
+.panel.is-show{
+  display:block;
+}
+
+// sidebar
+
+.sidebar{
+  .form__label{
+    display: block;
+    margin-bottom: 8px;
+    &:nth-child(n+2){
+      margin-top: 30px;
+    }
+  }
+  .sidebar__btn{
+    background-color: $baseColor;
+    display: block;
+    padding: 4px 20px;
+    margin: 30px auto;
+    width: 100%;
+  }
+}
+.radio__wrap{
+  margin-bottom: 10px;
+}
+.form__radio{
+  display: inline-block;
+  vertical-align: top;
+}
+.form__radio-text{
+  display: inline-block;
+  padding-top: 2px;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+.sidebar__questions{
+  margin-top: 60px;
+}
+.sidebar__questions-item{
+  padding: 20px 4px;
+  border-bottom: solid 1px #ccc;
+}
+
+.categories__item{
+  margin-bottom: 15px;
+  padding: 8px;
+  border: solid 0.5px #ccc;
+}
+.categories__link{
+  display: block;
+  font-weight: bold;
+  transition: .3s;
+  &:hover{
+    transition: .3s;
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+}
+
 .recipes{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
   @include mobile{
     margin: 0;
     justify-content: space-between;
   }
 }
 .recipeCard{
-  width: calc(100% / 3);
-  padding: 15px 15px 0;
+  border: #ccc 0.5px solid;
+  border-radius: 15px;
+  width: 31%;
+  padding: 15px 0;
+  margin-right: 20px;
   &:nth-child(n+4){
     margin-top: 35px;
+  }
+  &:nth-child(3n){
+    margin-right: 0;
+  }
+  &:hover{
+    box-shadow: 10px 5px 5px #ccc;
+    transition: .3s;
   }
   @include mobile{
     width: 48.5%;
     padding: 0;
+    margin-right: 0;
     &:nth-child(n+3){
       margin-top: 20px;
     }
@@ -586,12 +741,19 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   display: block;
   width: 100%;
   height: 220px;
+  @include mobile{
+    height: 160px;
+  }
   img{
     object-fit: cover;
     object-position: center;
     height: 100%;
     width: 100%;
-    border-radius: 15px;
+  }
+}
+.recipeCard__info{
+  @include mobile{
+    padding: 6px 6px 10px;
   }
 }
 .recipeCard__title{
@@ -599,12 +761,12 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   padding: 8px;
   line-height: 1.5;
   @include mobile{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding: 6px 0;
     line-height: 1.3;
   }
 }
-.recipeCard__info{
+.recipeCard__performance{
   display: flex;
   @include mobile{
     margin: 6px 0;
@@ -614,6 +776,11 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   margin: 8px;
   font-size: 1.2rem;
   color: #000;
+  @include mobile{
+    margin: 0;
+    margin-right: 6px;
+    font-size: 1.0rem;
+  }
   img{
     width: 16px;
     height: 16px;
@@ -622,17 +789,13 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
       height: 12px;
     }
   }
-  @include mobile{
-    margin: 0;
-    margin-right: 6px;
-    font-size: 1.0rem;
-  }
 }
 .recipeCard__cost{
   @extend .recipeCard__duration;
 }
 .recipeCard__tag{
   margin: 8px 0 0 8px;
+  font-size: 1.2rem;
   @include mobile{
     font-size: 1.0rem;
     margin: 0;
@@ -643,6 +806,11 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   padding: 4px 8px;
   border-radius: 5px;
   background-color: #CEDB00;
+  font-size: 1.2rem;
+  @include mobile{
+    font-size: 1.0rem;
+    margin: 0;
+  }
 }
 .recipeCard__tag-text2{
   @extend .recipeCard__tag-text1;
@@ -651,23 +819,23 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 .recipeCard__user{
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 8px;
   @include mobile{
-    padding: 0;
+    padding: 6px;
   }
 }
 .recipeCard__user-image{
   display: inline-block;
   margin-right: 20px;
   img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
     @include mobile{
-      width: 35px;
-      height: 35px;
+      width: 25px;
+      height: 25px;
     }
   }
   @include mobile{
@@ -676,6 +844,10 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 }
 .recipeCard__user-name{
   display: block;
+  font-size: 1.4rem;
+  @include mobile{
+    font-size: 1.2rem;
+  }
 }
 .recipeCard__timestamp{
   font-size: 1.2rem;
@@ -934,10 +1106,15 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   left: 0;
   display: inline-block;
   padding: 6px 12px;
-  background-color: #ccc;
+  background-color: #000;
+  border-bottom-right-radius: 15px;
   opacity: 0.6;
-  color: #000;
+  color: #fff;
   font-size: 1.4rem;
+  @include mobile{
+    font-size: 1.2rem;
+    padding: 3px 8px;
+  }
   .recipe__favorite-layout{
     display: flex;
     align-items: center;
@@ -949,7 +1126,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
     display: inline-block;
   }
   .favorite{
-    color: #000;
+    color: #EADE71;
     vertical-align: baseline;
     appearance: auto;
     white-space: initial;
@@ -960,10 +1137,11 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
     padding: 0;
     border: none;
     margin-right: 6px;
-    font-weight: bold
+    font-weight: bold;
   }
   .unfavorite{
     @extend .favorite;
+    color: #fff;
   }
 }
 .recipe__info{
@@ -1029,17 +1207,13 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   border-color: $baseColor;
   margin-right: 10px;
   @include mobile{
-    width: 32%;
+    width: 40%;
   }
 }
 .recipe__delete-btn{
-  color: #000;
-  width: 25%;
+  @extend .recipe__edit-btn;
   background-color: #d0d0d0;
   border-color: #d0d0d0;
-  @include mobile{
-    width: 32%;
-  }
 }
 .recipe__layout{
   display: flex;
@@ -1198,7 +1372,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   margin: 0 auto;
   @include mobile{
     width: 100%;
-    padding: 0 15px;
+    padding: 0;
   }
 }
 
@@ -1209,7 +1383,7 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   margin: 0;
   @include mobile{
     width: 100%;
-    padding: 0 15px;
+    padding: 0;
   }
 }
 

@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def set_q
+    @q = Recipe.ransack(params[:q])
+  end
 end

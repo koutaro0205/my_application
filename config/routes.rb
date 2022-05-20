@@ -15,11 +15,12 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :comments, only: [:create, :destroy]
     collection do
-      get :user_favorites, :following_user
+      get :user_favorites, :following_user, :conditional_search
     end
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resources :categories, except: [:index]
 end

@@ -50,8 +50,16 @@
         </div>
       </div>
 
-      <label class="form__label form__label-image">レシピのイメージ画像（再設定）</label>
-      <%= f.file_field :image, class: "image__field", accept: "image/jpeg,image/gif,image/png" %>
+      <div class="form__layout">
+        <div class="form__layout-item">
+          <label class="form__label form__label-image">レシピのイメージ画像（再設定）</label>
+          <%= f.file_field :image, class: "image__field", accept: "image/jpeg,image/gif,image/png" %>
+        </div>
+        <div class="form__layout-item">
+          <%= f.label :category_id, "カテゴリーを選択", class: "form__label" %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form__field' %>
+        </div>
+      </div>
 
       <%= f.submit "レシピ内容を更新する", class: "form__btn btn" %>
     <% end %>
