@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy, :following_user]
   before_action :correct_user_recipe, only: [:edit, :update, :destroy]
+  before_action :set_q, only: [:conditional_search]
 
   def index
     @recipes = Recipe.paginate(page: params[:page])
@@ -62,6 +63,11 @@ class RecipesController < ApplicationController
     @keyword = params[:keyword]
   end
 
+  def conditional_search
+    @recipes = @q.result.paginate(page: params[:page])
+    render 'conditional_search'
+  end
+
   def short_time
     @recipes = Recipe.where(tag: 1)
     @title = '時短'
@@ -81,7 +87,7 @@ class RecipesController < ApplicationController
 
   private
     def recipe_params
-      params.require(:recipe).permit(:title, :ingredient, :body, :image, :tag, :duration, :cost)
+      params.require(:recipe).permit(:title, :ingredient, :body, :image, :tag, :duration, :cost, :category_id)
     end
 
     def correct_user_recipe

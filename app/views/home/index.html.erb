@@ -1,39 +1,146 @@
 <% provide(:title, "ホーム") %>
-<section class="section content-width">
-  <h1 class="sectionTitle">最近のレシピ</h1>
-  <ul class="recipes recipes-latest">
-    <% if @recipes.any? %>
-      <%= render @recipes %>
-    <% else %>
-      <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
-    <% end %>
-  </ul>
-  <div class="read-more">
-    <%= link_to "レシピ一覧へ", recipes_path ,class: "read-more__btn btn"%>
-  </div>
-</section>
-<section class="section content-width">
-  <h1 class="sectionTitle">お気に入りの多いレシピ</h1>
-  <ul class="recipes recipes-favorites">
-    <% if @favorite_recipes.any? %>
-      <%= render @favorite_recipes %>
-    <% else %>
-      <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
-    <% end %>
-  </ul>
-</section>
-<% if logged_in? %>
-  <section class="section content-width">
-    <h1 class="sectionTitle">フォローしているユーザーのレシピ</h1>
-    <ul class="recipes recipes-following">
-    <% if @following_recipes.any? %>
-      <%= render @following_recipes %>
-    <% else %>
-      <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
-    <% end %>
+<div class="container content-width">
+  <div class="main-contents">
+    <ul class="tab-group">
+      <li class="tab tab-A is-active"><span>新着レシピ</span></li>
+      <li class="tab tab-B"><span>みんなのお気に入りレシピ</span></li>
+      <% if logged_in? %>
+        <li class="tab tab-C"><span>フォローユーザーのレシピ</span></li>
+      <% end %>
     </ul>
-    <div class="read-more">
-      <%= link_to "もっと見る", following_user_recipes_path, class: "read-more__btn btn"%>
+    <section class="section panel tab-A is-show">
+      <h1 class="sectionTitle">新着レシピ</h1>
+      <ul class="recipes recipes-latest">
+        <% if @recipes.any? %>
+          <%= render @recipes %>
+        <% else %>
+          <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
+        <% end %>
+      </ul>
+      <div class="read-more">
+        <%= link_to "レシピ一覧へ", recipes_path ,class: "read-more__btn btn"%>
+      </div>
+    </section>
+    <section class="section panel tab-B">
+      <h1 class="sectionTitle">みんなのお気に入りレシピ</h1>
+      <ul class="recipes recipes-favorites">
+        <% if @favorite_recipes.any? %>
+          <%= render @favorite_recipes %>
+        <% else %>
+          <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
+        <% end %>
+      </ul>
+    </section>
+    <% if logged_in? %>
+      <section class="section panel tab-C">
+        <h1 class="sectionTitle">フォローしているユーザーのレシピ</h1>
+        <ul class="recipes recipes-following">
+        <% if @following_recipes.any? %>
+          <%= render @following_recipes %>
+        <% else %>
+          <p class="nothing" style="padding-left: 30px;">現在投稿されているレシピはありません</p>
+        <% end %>
+        </ul>
+        <div class="read-more">
+          <%= link_to "もっと見る", following_user_recipes_path, class: "read-more__btn btn"%>
+        </div>
+      </section>
+    <% end %>
+  </div>
+  <div class="sidebar">
+    <h2 class="subTitle">条件を絞って検索</h2>
+    <%= search_form_for @q, url: conditional_search_recipes_path do |f| %>
+      <%= f.label :cost, 'コストで絞り込む', class: "form__label" %>
+      <div class="radio__wrap">
+        <%= f.radio_button :cost_lteq, 100, class: "form__radio" %>
+        <span class="form__radio-text">100円以内</span>
+      </div>
+      <div class="radio__wrap">
+        <%= f.radio_button :cost_lteq, 500, class: "form__radio" %>
+        <span class="form__radio-text">500円以内</span>
+      </div>
+      <div class="radio__wrap">
+        <%= f.radio_button :cost_lteq, 1000, class: "form__radio" %>
+        <span class="form__radio-text">1000円以内</span>
+      </div>
+
+      <%= f.label :duration, '調理時間で絞り込む', class: "form__label" %>
+      <div class="radio__wrap">
+        <%= f.radio_button :duration_lteq, 10, class: "form__radio" %>
+        <span class="form__radio-text">10分以内</span>
+      </div>
+      <div class="radio__wrap">
+        <%= f.radio_button :duration_lteq, 20, class: "form__radio" %>
+        <span class="form__radio-text">20分以内</span>
+      </div>
+      <div class="radio__wrap">
+        <%= f.radio_button :duration_lteq, 30, class: "form__radio" %>
+        <span class="form__radio-text">30分以内</span>
+      </div>
+      <%= f.submit '検索', class: 'sidebar__btn btn' %>
+    <% end %>
+
+    <h2 class="subTitle">カテゴリから探す</h2>
+    <% if @categories.any? %>
+      <ul class="categories">
+        <%= render @categories %>
+      </ul>
+    <% end %>
+
+    <div class="sidebar__questions">
+      <h2 class="subTitle">みんなの質問</h2>
+      <ul class="sidebar__questions-list">
+        <li class="sidebar__questions-item">
+          <h3 class="sidebar__questions-title">
+            質問があります。質問がありま...
+          </h3>
+          <span>2021年4月5日(金)</span>
+        </li>
+        <li class="sidebar__questions-item">
+          <h3 class="sidebar__questions-title">
+            質問があります。質問がありま...
+          </h3>
+          <span>2021年4月5日(金)</span>
+        </li>
+        <li class="sidebar__questions-item">
+          <h3 class="sidebar__questions-title">
+            質問があります。質問がありま...
+          </h3>
+          <span>2021年4月5日(金)</span>
+        </li>
+        <li class="sidebar__questions-item">
+          <h3 class="sidebar__questions-title">
+            質問があります。質問がありま...
+          </h3>
+          <span>2021年4月5日(金)</span>
+        </li>
+        <li class="sidebar__questions-item">
+          <h3 class="sidebar__questions-title">
+            質問があります。質問がありま...
+          </h3>
+          <span>2021年4月5日(金)</span>
+        </li>
+      </ul>
+      <%= link_to "質問一覧へ", following_user_recipes_path, class: "sidebar__btn btn"%>
     </div>
-  </section>
-<% end %>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const tabs = document.getElementsByClassName('tab');
+  for(let i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', tabSwitch, false);
+  }
+
+  function tabSwitch(){
+    // タブのclassの値を変更
+    document.getElementsByClassName('is-active')[0].classList.remove('is-active');
+    this.classList.add('is-active');
+    // コンテンツのclassの値を変更
+    document.getElementsByClassName('is-show')[0].classList.remove('is-show');
+    const arrayTabs = Array.prototype.slice.call(tabs);
+    const index = arrayTabs.indexOf(this);
+    document.getElementsByClassName('panel')[index].classList.add('is-show');
+  };
+}, false);
+</script>
