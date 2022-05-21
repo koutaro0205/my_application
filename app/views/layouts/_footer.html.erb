@@ -1,7 +1,10 @@
 <footer class="footer">
   <div class="footer__inner content-width">
     <ul class="footer__list">
-        <li><%= link_to 'ホームへ戻る', root_path, class: 'footer__link' %></li>
+      <li><%= link_to 'ホームへ戻る', root_path, class: 'footer__link' %></li>
+      <% if logged_in? && current_user.admin? %>
+        <li><%= link_to 'カテゴリを追加', categories_path, class: 'footer__link' %></li>
+      <% end %>
     </ul>
     <p class="footer__copyright">Copyright © 2022 Koutaro Inoue All Rights Reserved.</p>
   </div>
