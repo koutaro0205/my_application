@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe UserMailer, type: :mailer do
   let(:user) { FactoryBot.create(:user) }
   describe 'account_activation' do
-    # let(:user) { FactoryBot.create(:user) }
     let(:mail) { UserMailer.account_activation(user).deliver_now }
 
     before do
