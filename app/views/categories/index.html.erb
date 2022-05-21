@@ -1,0 +1,26 @@
+<% provide(:title, "カテゴリを追加(管理者)") %>
+<section class="section content-width">
+  <h1 class="sectionTitle">カテゴリを追加する</h1>
+  <div class="add-categories">
+    <div class="add-categories__form">
+      <%= form_with model: @category, local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name, "カテゴリー名", class: "form__label" %>
+        <%= f.text_field :name, class: "form__field" %>
+
+        <%= f.submit "カテゴリを追加する", class: "form__btn btn" %>
+      <% end %>
+    </div>
+    <ul class="add-categories__list">
+      <h2 class="subTitle">カテゴリ一覧</h2>
+      <% @categories.each do |category| %>
+        <li class="add-categories__item">
+          <h3 class="add-categories__name"><%= category.name %></h3>
+          <%= link_to '編集', edit_category_path(category), class: 'add-categories__edit-btn' %>
+          <%= link_to '削除', category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'add-categories__delete-btn' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

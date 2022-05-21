@@ -1,22 +1,23 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy ]
+  before_action :admin_user, only: [:index, :create, :edit, :update, :destroy ]
 
   def show
     @recipes = @category.recipes.paginate(page: params[:page])
   end
 
-  def new
+  def index
     @category = Category.new
+    @categories = Category.all
   end
 
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to root_path
+      redirect_to categories_path
     else
       @categories = Category.all
-      render 'new'
+      render 'index'
     end
   end
 
@@ -25,7 +26,8 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to root_path
+      redirect_to categories_path
+      flash[:success] = 'カテゴリの更新に成功しました'
     else
       render 'edit'
     end
@@ -33,7 +35,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to root_path
+    redirect_to categories_path
   end
 
   private

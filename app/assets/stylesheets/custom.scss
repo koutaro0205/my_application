@@ -1425,6 +1425,42 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
   }
 }
 
+/* add categories */
+.add-categories{
+  display: flex;
+  justify-content: space-between;
+  @include mobile{
+    flex-direction: column;
+  }
+}
+.add-categories__form{
+  width: 29%;
+  @include mobile{
+    width: 100%;
+  }
+}
+.add-categories__list{
+  width: 69%;
+  @include mobile{
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+.add-categories__item{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 6px;
+  border-bottom: 1px #ccc solid;
+}
+.add-categories__edit-btn{
+  color: $baseColor;
+  display: inline-block;
+}
+.add-categories__delete-btn{
+  @extend .add-categories__edit-btn;
+  color: red;
+}
+
 /* footer */
 
 .footer{
@@ -1437,6 +1473,9 @@ input[type="button"],input[type="text"],input[type="submit"],input[type="image"]
 .footer__list{
   display: flex;
   justify-content: center;
+  li{
+    margin-right: 15px;
+  }
 }
 .footer__link{
   color: #000;
