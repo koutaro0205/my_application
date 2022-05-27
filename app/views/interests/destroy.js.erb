@@ -1,0 +1,2 @@
+$(".question__interest-form").html("<%= escape_javascript(render('questions/interested_in')) %>");
+$(".question__interest-count").html('<%= @question.interests.count %>');

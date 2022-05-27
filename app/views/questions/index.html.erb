@@ -1,0 +1,25 @@
+<% provide(:title, "質問一覧") %>
+<section class="section content-width questions-page">
+  <h1 class="sectionTitle">
+    みんなの質問一覧
+    <div class="questions__new">
+      <%= link_to "質問してみる >>", new_question_path, class: "questions__new-link" %>
+    </div>
+  </h1>
+  <div class="questions">
+    <div class="questions__search">
+      <%= form_with( url: search_questions_path, local: true, method: :get, class: "questions__search-form" ) do |f| %>
+        <%= f.text_field :keyword, class: "questions__search-field", placeholder: "質問キーワードを入力" %>
+        <%= f.submit "質問を検索", class: "questions__search-submit btn" %>
+      <% end %>
+    </div>
+    <ul class="questions__list">
+      <% if @questions.any? %>
+        <%= render @questions %>
+      <% else %>
+        <p class="nothing" style="padding-left: 30px;">現在投稿されている質問はありません</p>
+      <% end %>
+    </ul>
+    <%= will_paginate @questions %>
+  </div>
+</section>

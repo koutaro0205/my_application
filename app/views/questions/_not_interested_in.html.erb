@@ -1,0 +1,7 @@
+<%= form_with(model: current_user.interests.find_by(question_id: @question.id),
+            html: { method: :delete }, local: false ) do |f| %>
+  <div class="question__interest-btn btn-opacity">
+    <%= f.submit "知りたい! (済)"%>
+    <%= image_tag 'interest.svg', :alt => 'デフォルト画像' %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 <% if @recipe.image.attached? %>
-        <%= image_tag @recipe.image %>
+  <%= image_tag @recipe.image %>
 <% else %>
   <%= image_tag 'noimage.jpg', class: "image", alt: 'デフォルト画像' %>
 <% end %>

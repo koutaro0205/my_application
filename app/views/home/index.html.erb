@@ -90,38 +90,16 @@
     <div class="sidebar__questions">
       <h2 class="subTitle">みんなの質問</h2>
       <ul class="sidebar__questions-list">
-        <li class="sidebar__questions-item">
-          <h3 class="sidebar__questions-title">
-            質問があります。質問がありま...
-          </h3>
-          <span>2021年4月5日(金)</span>
-        </li>
-        <li class="sidebar__questions-item">
-          <h3 class="sidebar__questions-title">
-            質問があります。質問がありま...
-          </h3>
-          <span>2021年4月5日(金)</span>
-        </li>
-        <li class="sidebar__questions-item">
-          <h3 class="sidebar__questions-title">
-            質問があります。質問がありま...
-          </h3>
-          <span>2021年4月5日(金)</span>
-        </li>
-        <li class="sidebar__questions-item">
-          <h3 class="sidebar__questions-title">
-            質問があります。質問がありま...
-          </h3>
-          <span>2021年4月5日(金)</span>
-        </li>
-        <li class="sidebar__questions-item">
-          <h3 class="sidebar__questions-title">
-            質問があります。質問がありま...
-          </h3>
-          <span>2021年4月5日(金)</span>
-        </li>
+        <% @question_items.each do |question_item| %>
+          <li class="sidebar__questions-item">
+            <h3 class="sidebar__questions-title">
+              <%= link_to question_item.title.truncate(30, omission: '...'), question_path(question_item) %>
+            </h3>
+            <span class="sidebar__questions-timestamp"><%= l question_item.created_at, format: :default %></span>
+          </li>
+        <% end %>
       </ul>
-      <%= link_to "質問一覧へ", following_user_recipes_path, class: "sidebar__btn btn"%>
+      <%= link_to "質問一覧へ", questions_path, class: "sidebar__btn btn"%>
     </div>
   </div>
 </div>

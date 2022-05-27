@@ -1,0 +1,27 @@
+<li class="questions__item">
+  <div class="questions__number">
+    <p class="questions__number-count"><%= question.question_comments.count %></p>
+    <p class="questions__number-label">回答</p>
+  </div>
+  <div class="questions__number">
+    <p class="questions__number-count"><%= question.interests.count %></p>
+    <p class="questions__number-label">知りたい</p>
+  </div>
+  <div class="questions__content">
+    <h2 class="questions__title"><%= link_to question.title, question_path(question) %></h2>
+    <p class="questions__body"><%= question.content.truncate(90, omission: '...') %></p>
+
+    <div class="questions__user-info">
+      <div class="questions__user-image">
+        <%= link_to user_path(question.user), class: 'questions__user-link' do %>
+          <% if question.user.image.attached? %>
+            <%= image_tag question.user.image, :class => "image" %>
+          <% else %>
+            <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+          <% end %>
+        <% end %>
+      </div>
+      <p class="questions__user-name"><%= link_to question.user.name, question.user %></p>
+    </div>
+  </div>
+</li>

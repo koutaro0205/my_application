@@ -1,0 +1,23 @@
+<li class="comments__item">
+  <div class="comments__userInfo">
+    <div class="comments__user-image">
+      <% if question_comment.user.image.attached? %>
+        <%= image_tag question_comment.user.image %>
+      <% else %>
+        <%= image_tag 'default.svg', class: "image", alt: 'デフォルト画像' %>
+      <% end %>
+    </div>
+    <p class="comments__user-name"><%= question_comment.user.name%></p>
+  </div>
+  <p class="comments__content">
+    <%= question_comment.content %>
+    <span class="comments__timestamp">
+      <%= l question_comment.created_at, format: :default %>
+    </span>
+    <% if question_comment.user == current_user %>
+    <span class="comments__delete">
+      <%= link_to "コメントを削除", question_question_comment_path(@question, question_comment), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "comments__delete-btn"%>
+    </span>
+    <% end %>
+  </p>
+</li>

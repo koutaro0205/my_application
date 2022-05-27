@@ -1,0 +1,20 @@
+<% provide(:title, "質問を投稿") %>
+<section class="section content-width">
+  <div class="form__inner-newPage">
+    <h1 class="sectionTitle">質問を投稿する</h1>
+    <%= form_with(model: @question, url: questions_path, scope: :question, local: true, class: "form") do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title, "質問タイトル", class: "form__label" %>
+      <span class="required">必須</span>
+      <%= f.text_field :title, class: "form__field", placeholder: "質問タイトルを入力" %>
+
+      <%= f.label :content, "質問内容", class: "form__label" %>
+      <%= f.text_area :content, class: "form__field form__textarea", placeholder: "質問内容を入力（※任意）" %>
+
+      <div class="form__btn__wrap">
+        <%= f.submit "質問を投稿する", class: "form__btn btn question-btn" %>
+      </div>
+    <% end %>
+  </div>
+</section>

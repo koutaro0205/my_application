@@ -20,6 +20,11 @@ class User < ApplicationRecord
                                     dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :questions, dependent: :destroy
+  has_many :question_comments, dependent: :destroy
+  has_many :interests, dependent: :destroy
+  has_many :interesting_questions, through: :interests, source: :question
+
   has_one_attached :image
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -92,6 +97,18 @@ class User < ApplicationRecord
   # def favorite?(user)
   #   favorites.where(user_id: user.id).exists?
   # end
+
+  def interested_in?(question)
+    self.interests.exists?(question_id: question.id)
+  end
+
+  def interested_in(question)
+    interesting_questions << question
+  end
+
+  def not_interested_in(question)
+    interests.find_by(question_id: question.id).destroy
+  end
 
   private
     def downcase_email

@@ -1,0 +1,136 @@
+<% provide(:title, "質問詳細") %>
+<section class="section content-width">
+  <h1 class="sectionTitle">質問詳細</h1>
+  <div class="question">
+    <div class="question__user-info">
+      <div class="question__user-image">
+        <%= link_to user_path(@question.user), class: 'question__user-link' do %>
+          <% if @question.user.image.attached? %>
+            <%= image_tag @question.user.image, :class => "image" %>
+          <% else %>
+            <%= image_tag 'default.svg', :class => "image", :alt => 'デフォルト画像' %>
+          <% end %>
+        <% end %>
+        <p class="question__user-name">ユーザー名</p>
+      </div>
+    </div>
+    <div class="question__content">
+      <h2 class="question__title"><%= @question.title %></h2>
+      <p class="question__body"><%= @question.content %></p>
+      <div class="question__info">
+        <span class="">コメント数: <%= @question.question_comments.count %></span>
+        <span class="question__timestamp"><%= l @question.created_at, format: :default %> 投稿</span>
+      </div>
+      <div class="question__interest">
+        <% if !current_user?(@user) && logged_in? %>
+          <%= render 'interest_form' %>
+          <span class="question__interest-count"><%= @question.interests.count %></span>
+        <% end %>
+      </div>
+      </div>
+      <% if @question.user == current_user %>
+        <%= link_to "編集", edit_question_path(@question), class: "question__edit-btn"%>
+      <% end %>
+    </div>
+  </div>
+</section>
+<section class="section content-width">
+    <h1 class="sectionTitle">コメント一覧</h1>
+      <div class="comments">
+        <ul class="comments__list">
+          <% if @question_comments.any? %>
+            <%= render @question_comments %>
+          <% end %>
+          <% if @question_comments.empty? %>
+            <p class="nothing">この投稿にコメントはありません。</p>
+          <% end %>
+        </ul>
+      </div>
+  
+    <% if logged_in? %>
+      <div class="q-modalBtn">
+        <button id="q-openModal">コメントを追加</button>
+      </div>
+      <div id="q-modalArea" class="q-modalArea">
+        <div id="q-modalBg" class="modalBg"></div>
+        <div class="q-modalWrapper">
+          <div class="q-modalContents">
+            <div class="form__inner-modal">
+              <h1 class="sectionTitle">コメントを投稿する</h1>
+                <%= form_with(model: [@question, @question_comment], local: true, class: "form") do |f| %>
+
+                <%= f.label :content, "コメント", class: "form__label" %>
+                <%= f.text_area :content, class: "form__field form__textarea", placeholder: "コメントを入力" %>
+
+                <%= f.submit "コメントを投稿する", class: "form__btn btn" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+</section>
+<script>
+// Modal Window
+
+function fadeIn(node, duration) {
+  if (getComputedStyle(node).display !== 'none') return;
+
+  if (node.style.display === 'none') {
+    node.style.display = '';
+  } else {
+    node.style.display = 'block';
+  }
+  node.style.opacity = 0;
+
+  var start = performance.now();
+
+  requestAnimationFrame(function tick(timestamp) {
+    var easing = (timestamp - start) / duration;
+
+    node.style.opacity = Math.min(easing, 1);
+
+    if (easing < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      node.style.opacity = '';
+    }
+  });
+}
+
+function fadeOut(node, duration) {
+  node.style.opacity = 1;
+
+  var start = performance.now();
+
+  requestAnimationFrame(function tick(timestamp) {
+    var easing = (timestamp - start) / duration;
+
+    node.style.opacity = Math.max(1 - easing, 0);
+
+    if (easing < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      node.style.opacity = '';
+      node.style.display = 'none';
+    }
+  });
+}
+
+window.addEventListener("load",function(){
+  var fadeInBtnElmt  = document.getElementById('q-openModal');
+  if (!fadeInBtnElmt){ return false;}
+
+  var fadeOutBtnElmt = document.getElementById("q-modalBg");
+  if (!fadeOutBtnElmt){ return false;}
+
+  fadeInBtnElmt.addEventListener("click", () => {
+    fadeIn(document.getElementById('q-modalArea'), 300);
+  });
+
+  fadeOutBtnElmt.addEventListener("click", () => {
+    fadeOut(document.getElementById('q-modalArea'), 300);
+  });
+});
+</script>
