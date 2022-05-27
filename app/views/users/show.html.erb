@@ -30,3 +30,14 @@
       </ul>
       <%= will_paginate @recipes %>
     </section>
+    <section class="section content-width">
+      <h1 class="sectionTitle">私の質問一覧</h1>
+      <ul class="questions__list">
+        <% if @questions.any? %>
+          <%= render @questions %>
+        <% else %>
+          <p class="nothing" style="padding-left: 30px;">現在投稿されている質問はありません</p>
+        <% end %>
+      </ul>
+      <%= will_paginate @questions %>
+    </section>

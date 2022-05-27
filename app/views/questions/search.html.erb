@@ -1,0 +1,13 @@
+<% provide(:title, "質問一覧") %>
+<section class="section content-width">
+  <h1 class="sectionTitle">みんなの質問一覧</h1>
+  <div class="questions">
+    <ul class="questions__list">
+      <% if @questions.empty? %>
+        <p><%= @keyword %>に関する質問は見つかりませんでした</p>
+      <% end %>
+      <%= render @questions %>
+    </ul>
+    <%= will_paginate @questions %>
+  </div>
+</section>

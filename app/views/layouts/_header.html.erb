@@ -21,7 +21,7 @@
       <div class="header__nav__inner">
         <ul class="header__nav-list">
           <li class="header__nav-item"><%= link_to 'ホーム', root_path, class: 'header__nav-link' %></li>
-          <li class="header__nav-item"><a href="" class="header__nav-link">空リンク</a></li>
+          <li class="header__nav-item"><%= link_to '質問一覧', questions_path, class: 'header__nav-link' %></li>
         <% if logged_in? %>
           <li class="header__nav-item dropdown">
             <span class="dropdown__menu"><%= current_user.name %></span>

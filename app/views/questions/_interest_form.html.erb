@@ -1,0 +1,7 @@
+<div class="question__interest-form">
+  <% if current_user.interested_in?(@question) %>
+    <%= render 'not_interested_in' %>
+  <% else %>
+    <%= render 'interested_in' %>
+  <% end %>
+</div>
