@@ -20,8 +20,8 @@ default: &default
 development:
   <<: *default
   database: my_portfolio_development
-  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
-  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials[:db_user] %>
+  password: <%= Rails.application.credentials[:db_password] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -29,8 +29,9 @@ development:
 test:
   <<: *default
   database: my_portfolio_test
-  username: <%= ENV['RAILS_DATABASE_USERNAME'] || 'example' %>
-  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials[:db_user] %>
+  password: <%= Rails.application.credentials[:db_password] %>
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
