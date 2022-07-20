@@ -1,5 +1,5 @@
 # ※未完成版
-（完成版ポートフォリオ：https://github.com/koutaro0205/my_portfolio_with_spa）
+完成版ポートフォリオ：https://github.com/koutaro0205/my_portfolio_with_spa
 ## 使用技術
 * HTML/CSS(sass)
 * JavaScript
